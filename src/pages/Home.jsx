@@ -25,15 +25,13 @@ function Home() {
 				</Link>
 
 				<p className="text-center text-4xl font-semibold mt-7">
-					Empower Your Future with{' '}
-					<HighlightText text={'Coding Skills'} />
+					Empower Your Future with <HighlightText text={'Coding Skills'} />
 				</p>
 
 				<p className="mt-4 w-[86%] text-center text-lg font-bold text-richblack-300">
-					with our online coding courses, you can learn at your own
-					pace, from anywhere in the world, and get access to a wealth
-					of resources, including hands-on projects, quizzes, and
-					personalized feedback from instructors.
+					with our online coding courses, you can learn at your own pace, from anywhere in the world, and
+					get access to a wealth of resources, including hands-on projects, quizzes, and personalized
+					feedback from instructors.
 				</p>
 
 				<div className="flex gap-7 mt-8">
@@ -58,9 +56,7 @@ function Home() {
 						position={'lg:flex-row'}
 						heading={
 							<h1 className="text-4xl font-semibold">
-								Unlock Your{' '}
-								<HighlightText text={'coding Potential'} /> with
-								our online courses
+								Unlock Your <HighlightText text={'coding Potential'} /> with our online courses
 							</h1>
 						}
 						subheading={
@@ -78,9 +74,7 @@ function Home() {
 						}}
 						codeblock={`<!DOCTYPE html>\n<html>\n<head><title>Example</title><linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<h1><ahref="/">Header</a></h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a></>`}
 						codeColor={'text-blue-100'}
-						backgroundGradient={
-							'bg-gradient-to-r from-slate-900 to-slate-700'
-						}
+						backgroundGradient={'bg-gradient-to-r from-slate-900 to-slate-700'}
 					/>
 				</div>
 
@@ -114,9 +108,7 @@ function Home() {
 						}}
 						codeblock={`<!DOCTYPE html>\n<html>\n<head><title>Example</title><linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<h1><ahref="/">Header</a></h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a><//>`}
 						codeColor={'text-blue-100'}
-						backgroundGradient={
-							'bg-gradient-to-l from-slate-900 to-slate-700'
-						}
+						backgroundGradient={'bg-gradient-to-l from-slate-900 to-slate-700'}
 					/>
 				</div>
 
@@ -146,15 +138,13 @@ function Home() {
 				<div className="w-10/12 flex flex-col items-center justify-between gap-7 mx-auto">
 					<div className="flex flex-row gap-5 mb-10 mt-10">
 						<div className="text-4xl w-[45%] font-semibold">
-							Get the Skills you need for a{' '}
-							<HighlightText text={'Job that is in demand'} />
+							Get the Skills you need for a <HighlightText text={'Job that is in demand'} />
 						</div>
 
 						<div className="flex flex-col gap-10 items-start w-[45%]">
 							<p className="text-[16px]">
-								The modern StudyNotion is the dictates its own
-								terms. Today, to be a competitive specialist
-								requires more than professional skills.
+								The modern StudyNotion is the dictates its own terms. Today, to be a competitive
+								specialist requires more than professional skills.
 							</p>
 							<CTAButton active={true} linkto={'/signup'}>
 								Learn More
@@ -172,9 +162,7 @@ function Home() {
 			<div className="w-10/12 max-w-maxContent flex flex-col items-center justify-between gap-7 mx-auto bg-richblack-900 text-white">
 				<InstructorSection />
 
-				<h2 className="text-center text-4xl font-semibold mt-5">
-					reviews from other learners
-				</h2>
+				<h2 className="text-center text-4xl font-semibold mt-5">reviews from other learners</h2>
 
 				{/* reviewsSider */}
 			</div>

@@ -10,6 +10,7 @@ exports.updateProfile = async (req, res) => {
 
 		// Find the user by id
 		const user = await User.findById(id);
+		console.log('profilecontroller user', user);
 		if (!user) {
 			return res.status(404).json({ error: 'User not found' });
 		}
@@ -49,11 +50,6 @@ exports.updateProfile = async (req, res) => {
 
 exports.deleteAccount = async (req, res) => {
 	try {
-		// TODO: Find More on Job Schedule
-		// const job = schedule.scheduleJob("10 * * * * *", function () {
-		// 	console.log("The answer to life, the universe, and everything!");
-		// });
-		// console.log(job);
 		console.log('printing id', req.user.id);
 		const id = req.user.id;
 
@@ -66,8 +62,6 @@ exports.deleteAccount = async (req, res) => {
 		}
 		// Delete Assosiated Profile with the User
 		await Profile.findByIdAndDelete({ _id: user.additionalDetails });
-		// TODO: Unenroll User From All the Enrolled Courses
-		// Now Delete User
 		await User.findByIdAndDelete({ _id: id });
 		res.status(200).json({
 			success: true,
@@ -85,9 +79,7 @@ exports.deleteAccount = async (req, res) => {
 exports.getAllUserDetails = async (req, res) => {
 	try {
 		const id = req.user.id;
-		const userDetails = await User.findById(id)
-			.populate('additionalDetails')
-			.exec();
+		const userDetails = await User.findById(id).populate('additionalDetails').exec();
 		console.log(userDetails);
 		res.status(200).json({
 			success: true,
@@ -106,12 +98,7 @@ exports.updateDisplayPicture = async (req, res) => {
 	try {
 		const displayPicture = req.files.displayPicture;
 		const userId = req.user.id;
-		const image = await uploadImageToCloudinary(
-			displayPicture,
-			process.env.FOLDER_NAME,
-			1000,
-			1000
-		);
+		const image = await uploadImageToCloudinary(displayPicture, process.env.FOLDER_NAME, 1000, 1000);
 		console.log(image);
 		const updatedProfile = await User.findByIdAndUpdate(
 			{ _id: userId },
