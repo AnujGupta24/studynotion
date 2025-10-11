@@ -104,12 +104,19 @@ function About() {
 			</section>
 
 			{/* section4 */}
-			<StatsComponent />
+			<section className="mx-auto flex bg-richblack-600 flex-col items-center justify-between max-w-maxContent mb-14">
+				<StatsComponent />
+			</section>
 
 			{/* section5 */}
-			<section className="mx-auto flex w-10/12 flex-col items-center justify-between max-w-maxContent ">
+			<section className="mx-auto flex w-10/12 flex-col items-center justify-between max-w-maxContent mb-14">
 				<LearningGrid />
 				<ContactFormSection />
+			</section>
+
+			{/* ReviewSlider */}
+			<section>
+				<div>review from otehrs</div>
 			</section>
 
 			<Footer />

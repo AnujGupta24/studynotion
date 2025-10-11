@@ -102,7 +102,7 @@ exports.signUp = async (req, res) => {
 		console.log('recentOtp:', recentOtp);
 
 		// validate otp
-		if (recentOtp.length == 0) {
+		if (recentOtp.length === 0) {
 			return res.status(400).json({
 				success: false,
 				message: 'OTP not found',
@@ -117,9 +117,6 @@ exports.signUp = async (req, res) => {
 
 		// hash the pwd
 		const hashedPassword = await bcrypt.hash(password, 10);
-
-		// Set approved based on accountType
-		// let approved = accountType === 'Instructor' ? false : true;
 
 		// create entry in db
 		const profileDetails = await Profile.create({

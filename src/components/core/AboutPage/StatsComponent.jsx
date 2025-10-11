@@ -7,17 +7,15 @@ function StatsComponent() {
 	];
 	return (
 		<section>
-			<div>
-				<div className="flex gap-x-5">
-					{stats.map((stat, idx) => {
-						return (
-							<div key={idx}>
-								<h1>{stat.count}</h1>
-								<h2>{stat.label}</h2>
-							</div>
-						);
-					})}{' '}
-				</div>
+			<div className="flex w-full justify-between px-4 py-8 lg:py-14 lg:px-12 2xl:px-16 gap-6 lg:gap-20		">
+				{stats.map((stat, idx) => {
+					return (
+						<div className="text-richblack-50 flex flex-col justify-center items-center" key={idx}>
+							<h1 className="text-5xl font-bold ">{stat.count}</h1>
+							<h2 className="text-lg font-semibold">{stat.label}</h2>
+						</div>
+					);
+				})}
 			</div>
 		</section>
 	);
