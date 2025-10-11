@@ -7,7 +7,7 @@ function StatsComponent() {
 	];
 	return (
 		<section>
-			<div className="flex w-full justify-between px-4 py-8 lg:py-14 lg:px-12 2xl:px-16 gap-6 lg:gap-20		">
+			<div className="flex w-full justify-between lg:py-10 lg:px-5 gap-28">
 				{stats.map((stat, idx) => {
 					return (
 						<div className="text-richblack-50 flex flex-col justify-center items-center" key={idx}>
