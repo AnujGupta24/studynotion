@@ -32,14 +32,17 @@ exports.sendOtp = async (req, res) => {
 		console.log('OTP generated --> ', otp);
 
 		// Checking is otp is unique
-		const result = await OTP.findOne({ otp: otp });
-		console.log('Result', result);
+		let result = await OTP.findOne({ otp: otp });
+		console.log('send otp Result', result);
 
 		while (result) {
 			otp = otpGenerator.generate(6, {
 				upperCaseAlphabets: false,
+				lowerCaseAlphabets: false,
+				specialChars: false,
 			});
-			// result = await OTP.findOne({ otp: otp });
+
+			result = await OTP.findOne({ otp: otp });
 		}
 
 		const otpPayload = { email, otp };
@@ -81,7 +84,7 @@ exports.signUp = async (req, res) => {
 		if (password !== confirmPassword) {
 			return res.status(400).json({
 				success: false,
-				message: 'Password and ConfirmPassword value does not match, please try again later',
+				message: 'Password does not match',
 			});
 		}
 
@@ -99,25 +102,24 @@ exports.signUp = async (req, res) => {
 		console.log('recentOtp:', recentOtp);
 
 		// validate otp
-		if (recentOtp.length === 0) {
+		if (recentOtp.length == 0) {
 			return res.status(400).json({
 				success: false,
-				message: 'OTP is not valid',
+				message: 'OTP not found',
 			});
 		} else if (otp !== recentOtp[0].otp) {
 			//Invalid otp
 			return res.status(400).json({
 				success: false,
-				message: 'The OTP is not valid',
+				message: 'Invalid OTP',
 			});
 		}
 
 		// hash the pwd
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		// Create the user
-		let approved = '';
-		approved === 'Instructor' ? (approved = false) : (approved = true);
+		// Set approved based on accountType
+		// let approved = accountType === 'Instructor' ? false : true;
 
 		// create entry in db
 		const profileDetails = await Profile.create({

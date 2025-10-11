@@ -151,7 +151,6 @@ export function resetPassword(password, confirmPassword, token, navigate) {
 			console.log('reset password error............', error);
 			toast.error('Failed To Reset Password');
 		}
-
 		toast.dismiss(toastId);
 		dispatch(setLoading(false));
 	};

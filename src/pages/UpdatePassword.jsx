@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { resetPassword } from '../services/operations/authAPI';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineArrowLeft } from 'react-icons/ai';
 
 function UpdatePassword() {
 	const dispatch = useDispatch();
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const [formData, setFormData] = useState({
 		password: '',
@@ -30,7 +31,7 @@ function UpdatePassword() {
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
 		const token = location.pathname.split('/').at(-1);
-		dispatch(resetPassword(password, confirmPassword, token));
+		dispatch(resetPassword(password, confirmPassword, token, navigate));
 	};
 
 	return (

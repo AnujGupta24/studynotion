@@ -12,15 +12,17 @@ function VerifyEmail() {
 	const { signupData, loading } = useSelector((state) => state.auth);
 
 	useEffect(() => {
+		// Only allow access of this route when user has filled the signup form
 		if (!signupData) {
 			navigate('/signup');
 		}
 	}, [navigate, signupData]);
 
-	const handleOnSubmit = (e) => {
+	const handleVerifyAndSignup = (e) => {
 		e.preventDefault();
 
 		const { accountType, firstName, lastName, email, password, confirmPassword } = signupData;
+
 		dispatch(signUp(accountType, firstName, lastName, email, password, confirmPassword, otp, navigate));
 	};
 
@@ -37,7 +39,7 @@ function VerifyEmail() {
 						A verfication code has been sent to you. Enter the code below
 					</p>
 
-					<form onSubmit={handleOnSubmit}>
+					<form onSubmit={handleVerifyAndSignup}>
 						<OTPInput
 							value={otp}
 							onChange={setOtp}
@@ -73,7 +75,7 @@ function VerifyEmail() {
 
 						<button
 							className="flex items-center text-blue-100 gap-x-2"
-							onClick={() => sendOtp(signupData.email, navigate)}
+							onClick={() => dispatch(sendOtp(signupData.email, navigate))}
 						>
 							Resend it
 						</button>

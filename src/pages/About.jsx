@@ -71,7 +71,7 @@ function About() {
 					</div>
 
 					{/* vison mission div */}
-					<div className="flex flex-col items-center lg:gap-5 lg:flex-row justify-between">
+					<div className="flex flex-col items-center lg:flex-row justify-between">
 						{/* left box */}
 						<div className="my-14 flex lg:w-[40%] flex-col gap-10">
 							<h2 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%]">
