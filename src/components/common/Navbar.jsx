@@ -11,6 +11,7 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 
 function Navbar() {
 	console.log('printing base url: ', import.meta.env.VITE_BASE_URL);
+
 	const { token } = useSelector((state) => state.auth);
 	const { user } = useSelector((state) => state.profile);
 	const { totalItems } = useSelector((state) => state.cart);
@@ -30,8 +31,9 @@ function Navbar() {
 	};
 
 	useEffect(() => {
+		console.log('printing token', token);
 		fetchSublinks();
-	}, []);
+	}, [token]);
 
 	const matchRoute = (route) => {
 		return matchPath({ path: route }, location.pathname);

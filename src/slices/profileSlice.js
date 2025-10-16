@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	user: null,
+	/* problem statement: when we login first so the user data gets store for the first time. but when we refresh 
+		the page so the user gets clear from the store meaning we didnt set the user data in the localstorage.
+		so we need to set the user data in the localstorage. in authApi as well here
+	*/
+	user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
 	loading: false,
 };
 

@@ -126,7 +126,7 @@ export default {
 				},
 			},
 			maxWidth: {
-				maxContent: '1260px',
+				maxContent: '1000px',
 				maxContentTab: '650px',
 			},
 		},

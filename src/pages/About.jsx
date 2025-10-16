@@ -11,13 +11,13 @@ import ContactFormSection from '../components/core/AboutPage/ContactFormSection'
 
 function About() {
 	return (
-		<div className="">
+		<div>
 			{/* section1 */}
-			<section className="">
-				<div className="relative mx-auto flex w-10/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
-					<header className="mx-auto py-7 text-4xl font-semibold lg:w-[70%]">
+			<section className="bg-gray-700">
+				<div className="relative mx-auto flex w-10/12 max-w-maxContent flex-col justify-between gap-20 text-center text-richblack-5">
+					<header className="mx-auto py-10 text-4xl font-semibold lg:w-[70%]">
 						Driving Innovation in Online Education for a <HighlightText text={'Brighter Future'} />
-						<p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
+						<p className="mx-auto mt-5 text-center text-base font-medium text-richblack-200 lg:w-[95%]">
 							Studynotion is at the forefront of driving innovation in online education. We're
 							passionate about creating a brighter future by offering cutting-edge courses,
 							leveraging emerging technologies, and nurturing a vibrant learning community.
@@ -46,7 +46,7 @@ function About() {
 					{/* founding story waala div */}
 					<div className="flex flex-col items-center gap-10 lg:flex-row justify-between">
 						{/* left box */}
-						<div className="my-14 flex lg:w-[50%] flex-col gap-10">
+						<div className="my-16 flex lg:w-[50%] flex-col gap-10">
 							<h2 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
 								Our Founding Story
 							</h2>
@@ -73,7 +73,7 @@ function About() {
 					{/* vison mission div */}
 					<div className="flex flex-col items-center lg:flex-row justify-between">
 						{/* left box */}
-						<div className="my-14 flex lg:w-[40%] flex-col gap-10">
+						<div className="mb-12 flex lg:w-[40%] flex-col gap-10">
 							<h2 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%]">
 								<HighlightText text={'Our Vision'} />
 							</h2>
@@ -85,9 +85,8 @@ function About() {
 								experience.
 							</p>
 						</div>
-
-						{/* right box */}
-						<div className="my-14 flex lg:w-[40%] flex-col gap-5">
+						{/* right box */}b
+						<div className="mb-24 flex lg:w-[40%] flex-col gap-5">
 							<h2 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
 								<HighlightText text={'Our Mission'} />
 							</h2>
@@ -104,12 +103,12 @@ function About() {
 			</section>
 
 			{/* section4 */}
-			<section className="mx-auto flex bg-richblack-600 flex-col items-center justify-between max-w-maxContent mb-14">
+			<section className="mx-auto flex bg-richblack-600 flex-col items-center justify-between mb-20">
 				<StatsComponent />
 			</section>
 
 			{/* section5 */}
-			<section className="mx-auto flex w-10/12 flex-col items-center justify-between max-w-maxContent mb-14">
+			<section className="mx-auto flex w-10/12 flex-col items-center justify-between max-w-maxContent mb-20">
 				<LearningGrid />
 				<ContactFormSection />
 			</section>
