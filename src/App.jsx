@@ -9,6 +9,7 @@ import UpdatePassword from './pages/updatePassword';
 import VerifyEmail from './pages/VerifyEmail';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import PrivateRoute from './components/core/Auth/PrivateRoute';
 
 function App() {
 	return (
@@ -73,6 +74,7 @@ function App() {
 						</OpenRoute>
 					}
 				/>
+				<Route element={<PrivateRoute>{/* <Dashboard /> */}</PrivateRoute>}></Route>
 			</Routes>
 		</div>
 	);
