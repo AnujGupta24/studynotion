@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 import { setLoading, setToken } from '../../slices/authSlice';
 import { resetCart } from '../../slices/cartSlice';
 import { setUser } from '../../slices/profileSlice';
-import { apiConnector } from '../apiconnector';
+import { apiConnector } from '../apiConnector';
 import { endpoints } from '../apis';
 
 // this all are pending to create in apis.js

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import ProfileDropDown from '../core/Auth/ProfileDropDown';
 import { useEffect, useState } from 'react';
-import { apiConnector } from '../../services/apiconnector';
+import { apiConnector } from '../../services/apiConnector';
 import { categories } from '../../services/apis';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 
