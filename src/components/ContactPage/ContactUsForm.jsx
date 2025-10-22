@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { apiConnector } from '../../services/apiconnector';
+import { apiConnector } from '../../services/apiConnector';
 import { contactusEndpoint } from '../../services/apis';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';

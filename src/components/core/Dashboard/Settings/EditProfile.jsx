@@ -35,7 +35,7 @@ function EditProfile() {
 					<h2 className="text-lg font-semibold text-richblack-5">Profile Information</h2>
 					<div className="flex flex-col gap-5 lg:flex-row">
 						<div className="flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="firstName" className="lable-style">
+							<label htmlFor="firstName" className="text-richblack-50 text-xl">
 								First Name
 							</label>
 							<input
@@ -43,7 +43,7 @@ function EditProfile() {
 								name="firstName"
 								id="firstName"
 								placeholder="Enter first name"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('firstName', { required: true })}
 								defaultValue={user?.firstName}
 							/>
@@ -54,7 +54,7 @@ function EditProfile() {
 							)}
 						</div>
 						<div className="flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="lastName" className="lable-style">
+							<label htmlFor="lastName" className="text-richblack-50 text-xl">
 								Last Name
 							</label>
 							<input
@@ -62,7 +62,7 @@ function EditProfile() {
 								name="lastName"
 								id="lastName"
 								placeholder="Enter first name"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('lastName', { required: true })}
 								defaultValue={user?.lastName}
 							/>
@@ -76,14 +76,14 @@ function EditProfile() {
 
 					<div className="flex flex-col gap-5 lg:flex-row">
 						<div className="flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="dateOfBirth" className="lable-style">
+							<label htmlFor="dateOfBirth" className="text-richblack-50 text-xl">
 								Date of Birth
 							</label>
 							<input
 								type="date"
 								name="dateOfBirth"
 								id="dateOfBirth"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('dateOfBirth', {
 									required: {
 										value: true,
@@ -103,14 +103,14 @@ function EditProfile() {
 							)}
 						</div>
 						<div className="flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="gender" className="lable-style">
+							<label htmlFor="gender" className="text-richblack-50 text-xl">
 								Gender
 							</label>
 							<select
 								type="text"
 								name="gender"
 								id="gender"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('gender', { required: true })}
 								defaultValue={user?.additionalDetails?.gender}
 							>
@@ -132,7 +132,7 @@ function EditProfile() {
 
 					<div className="flex flex-col gap-5 lg:flex-row">
 						<div className="flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="contactNumber" className="lable-style">
+							<label htmlFor="contactNumber" className="text-richblack-50 text-xl">
 								Contact Number
 							</label>
 							<input
@@ -140,7 +140,7 @@ function EditProfile() {
 								name="contactNumber"
 								id="contactNumber"
 								placeholder="Enter Contact Number"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('contactNumber', {
 									required: {
 										value: true,
@@ -158,7 +158,7 @@ function EditProfile() {
 							)}
 						</div>
 						<div className="flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="about" className="lable-style">
+							<label htmlFor="about" className="text-richblack-50 text-xl">
 								About
 							</label>
 							<input
@@ -166,7 +166,7 @@ function EditProfile() {
 								name="about"
 								id="about"
 								placeholder="Enter Bio Details"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('about', { required: true })}
 								defaultValue={user?.additionalDetails?.about}
 							/>

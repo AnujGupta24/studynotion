@@ -13,7 +13,7 @@ export function getUserDetails(token, navigate) {
 
 		try {
 			const response = await apiConnector('GET', GET_USER_DETAILS_API, null, {
-				Authorization: `Bearer ${token}`,
+				Authorisation: `Bearer ${token}`,
 			});
 			console.log('GET_USER_DETAILS API RESPONSE............', response);
 
@@ -42,7 +42,7 @@ export async function getUserEnrolledCourses(token) {
 
 	try {
 		const response = await apiConnector('GET', GET_USER_ENROLLED_COURSES_API, null, {
-			Authorization: `Bearer ${token}`,
+			Authorisation: `Bearer ${token}`,
 		});
 
 		if (!response.data.success) {
@@ -64,7 +64,7 @@ export async function getInstructorData(token) {
 
 	try {
 		const response = await apiConnector('GET', GET_INSTRUCTOR_DATA_API, null, {
-			Authorization: `Bearer ${token}`,
+			Authorisation: `Bearer ${token}`,
 		});
 
 		console.log('GET_INSTRUCTOR_API_RESPONSE', response);
@@ -76,8 +76,3 @@ export async function getInstructorData(token) {
 	toast.dismiss(toastId);
 	return result;
 }
-
-const profileApi = () => {
-	return <div>profileApi</div>;
-};
-export default profileApi;

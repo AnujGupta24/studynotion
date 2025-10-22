@@ -36,7 +36,7 @@ function UpdatePassword() {
 					<h2 className="text-lg font-semibold text-richblack-5">Password</h2>
 					<div className="flex flex-col gap-5 lg:flex-row">
 						<div className="relative flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="oldPassword" className="lable-style">
+							<label htmlFor="oldPassword" className="text-richblack-50 text-xl">
 								Current Password
 							</label>
 							<input
@@ -44,7 +44,7 @@ function UpdatePassword() {
 								name="oldPassword"
 								id="oldPassword"
 								placeholder="Enter Current Password"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('oldPassword', { required: true })}
 							/>
 							<span
@@ -64,7 +64,7 @@ function UpdatePassword() {
 							)}
 						</div>
 						<div className="relative flex flex-col gap-2 lg:w-[48%]">
-							<label htmlFor="newPassword" className="lable-style">
+							<label htmlFor="newPassword" className="text-richblack-50 text-xl">
 								New Password
 							</label>
 							<input
@@ -72,7 +72,7 @@ function UpdatePassword() {
 								name="newPassword"
 								id="newPassword"
 								placeholder="Enter New Password"
-								className="form-style"
+								className="p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md"
 								{...register('newPassword', { required: true })}
 							/>
 							<span

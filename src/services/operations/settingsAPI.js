@@ -14,7 +14,7 @@ export function updateDisplayPicture(token, formData) {
 		try {
 			const response = await apiConnector('PUT', UPDATE_DISPLAY_PICTURE_API, formData, {
 				'Content-Type': 'multipart/form-data',
-				Authorization: `Bearer ${token}`,
+				Authorisation: `Bearer ${token}`,
 			});
 			console.log('UPDATE_DISPLAY_PICTURE_API API RESPONSE............', response);
 
@@ -33,12 +33,15 @@ export function updateDisplayPicture(token, formData) {
 }
 
 export function updateProfile(token, formData) {
+	console.log('updateprofiletoken', token);
+
+	console.log('formData contents', formData);
 	return async (dispatch) => {
 		const toastId = toast.loading('Loading...');
 
 		try {
 			const response = await apiConnector('PUT', UPDATE_PROFILE_API, formData, {
-				Authorization: `Bearer ${token}`,
+				Authorisation: `Bearer ${token}`,
 			});
 			console.log('UPDATE_PROFILE_API API RESPONSE............', response);
 
@@ -60,11 +63,13 @@ export function updateProfile(token, formData) {
 }
 
 export async function changePassword(token, formData) {
+	console.log('changePasswordtoken', token);
+	console.log('changePassword formData contents', formData);
 	const toastId = toast.loading('Loading...');
 
 	try {
 		const response = await apiConnector('POST', CHANGE_PASSWORD_API, formData, {
-			Authorization: `Bearer ${token}`,
+			Authorisation: `Bearer ${token}`,
 		});
 		console.log('CHANGE_PASSWORD_API API RESPONSE............', response);
 
@@ -86,7 +91,7 @@ export function deleteProfile(token, navigate) {
 
 		try {
 			const response = await apiConnector('DELETE', DELETE_PROFILE_API, null, {
-				Authorization: `Bearer ${token}`,
+				Authorisation: `Bearer ${token}`,
 			});
 			console.log('DELETE_PROFILE_API API RESPONSE............', response);
 

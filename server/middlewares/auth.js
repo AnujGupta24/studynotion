@@ -6,9 +6,9 @@ exports.auth = async (req, res, next) => {
 	try {
 		// extract token
 		const token =
-			req.cookies.token ||
-			req.body.token || //avoid this way
-			req.header('Authorisation').replace('Bearer ', ''); //safe way
+			req?.cookies?.token ||
+			req?.body?.token || //avoid this way
+			req?.header('Authorisation')?.replace('Bearer ', ''); //safe way
 
 		// if token missing return res
 		if (!token) {

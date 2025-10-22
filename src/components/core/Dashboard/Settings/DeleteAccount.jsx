@@ -5,6 +5,7 @@ import { FiTrash2 } from 'react-icons/fi';
 
 function DeleteAccount() {
 	const { token } = useSelector((state) => state.auth);
+	console.log('delete acc token', token);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ function DeleteAccount() {
 				</div>
 				<div className="flex flex-col space-y-2">
 					<h2 className="text-lg font-semibold text-richblack-5">Delete Account</h2>
-					<div className="w-3/5 text-pink-25">
+					<div className="w-[90%] text-pink-25">
 						<p>Would you like to delete account?</p>
 						<p>
 							This account may contain Paid Courses. Deleting your account is permanent and will
