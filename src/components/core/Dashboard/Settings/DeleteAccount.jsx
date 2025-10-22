@@ -5,7 +5,6 @@ import { FiTrash2 } from 'react-icons/fi';
 
 function DeleteAccount() {
 	const { token } = useSelector((state) => state.auth);
-	console.log('delete acc token', token);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

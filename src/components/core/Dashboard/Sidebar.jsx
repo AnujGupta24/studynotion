@@ -4,8 +4,8 @@ import SidebarLink from './SidebarLink';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../../services/operations/authAPI';
-import { VscSignOut } from 'react-icons/vsc';
 import ConfirmationModal from '../../common/ConfirmationModal';
+import { GrLogout } from 'react-icons/gr';
 
 function Sidebar() {
 	const { loading: authLoading } = useSelector((state) => state.auth);
@@ -59,7 +59,7 @@ function Sidebar() {
 						}
 					>
 						<div className="flex items-center gap-x-2">
-							<VscSignOut className="text-lg" />
+							<GrLogout className="text-lg" />
 							<span>Logout</span>
 						</div>
 					</button>

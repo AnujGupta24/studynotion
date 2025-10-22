@@ -17,7 +17,7 @@ function ForgotPassword() {
 	};
 
 	return (
-		<div className="text-white flex justify-center items-center h-screen">
+		<div className="text-white flex justify-center items-center max-w-maxContent mx-auto w-10/12 h-screen">
 			{loading ? (
 				<div className="loader"></div>
 			) : (

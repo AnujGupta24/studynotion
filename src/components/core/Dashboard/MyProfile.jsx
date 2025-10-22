@@ -9,9 +9,9 @@ function MyProfile() {
 	const navigate = useNavigate();
 
 	return (
-		<div className="w-10/12 mx-auto max-w-maxContent mt-10">
+		<div className="w-10/12 mx-auto max-w-maxContent mt-5">
 			{/* heading */}
-			<h1 className="mb-14 text-3xl font-medium text-richblack-5">My Profile</h1>
+			<h1 className="mb-10 text-3xl font-medium text-richblack-5">My Profile</h1>
 
 			{/* profile */}
 			<div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">

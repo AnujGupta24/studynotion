@@ -58,8 +58,8 @@ function UpdatePassword() {
 								)}
 							</span>
 							{errors.oldPassword && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
-									Please enter your Current Password.
+								<span className="-mt-1 text-[12px] text-red-400">
+									Please enter your Current Password*
 								</span>
 							)}
 						</div>
@@ -86,8 +86,8 @@ function UpdatePassword() {
 								)}
 							</span>
 							{errors.newPassword && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
-									Please enter your New Password.
+								<span className="-mt-1 text-[12px] text-red-400">
+									Please enter your New Password*
 								</span>
 							)}
 						</div>

@@ -24,8 +24,8 @@ function EnrolledCourses() {
 	}, [token]);
 
 	return (
-		<div className="w-10/12 mx-auto max-w-maxContent mt-10">
-			<h1 className="mb-14 text-3xl font-medium text-richblack-5">Enrolled Courses</h1>
+		<div className="w-10/12 mx-auto max-w-maxContent mt-5">
+			<h1 className="mb-10 text-3xl font-medium text-richblack-5">Enrolled Courses</h1>
 
 			{!enrolledCourses ? (
 				<div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">

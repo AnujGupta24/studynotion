@@ -20,7 +20,6 @@ function EditProfile() {
 	} = useForm();
 
 	const submitProfileForm = async (data) => {
-		// console.log("Form Data - ", data)
 		try {
 			dispatch(updateProfile(token, data));
 		} catch (error) {
@@ -48,8 +47,8 @@ function EditProfile() {
 								defaultValue={user?.firstName}
 							/>
 							{errors.firstName && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
-									Please enter your first name.
+								<span className="-mt-1 text-[12px] text-red-400">
+									Please enter your first name*
 								</span>
 							)}
 						</div>
@@ -67,8 +66,8 @@ function EditProfile() {
 								defaultValue={user?.lastName}
 							/>
 							{errors.lastName && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
-									Please enter your last name.
+								<span className="-mt-1 text-[12px] text-red-400">
+									Please enter your last name*
 								</span>
 							)}
 						</div>
@@ -87,17 +86,17 @@ function EditProfile() {
 								{...register('dateOfBirth', {
 									required: {
 										value: true,
-										message: 'Please enter your Date of Birth.',
+										message: 'Please enter your Date of Birth*',
 									},
 									max: {
 										value: new Date().toISOString().split('T')[0],
-										message: 'Date of Birth cannot be in the future.',
+										message: 'Date of Birth cannot be in the future*',
 									},
 								})}
 								defaultValue={user?.additionalDetails?.dateOfBirth}
 							/>
 							{errors.dateOfBirth && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
+								<span className="-mt-1 text-[12px] text-red-400">
 									{errors.dateOfBirth.message}
 								</span>
 							)}
@@ -123,8 +122,8 @@ function EditProfile() {
 								})}
 							</select>
 							{errors.gender && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
-									Please enter your Date of Birth.
+								<span className="-mt-1 text-[12px] text-red-400">
+									Please enter your Date of Birth*
 								</span>
 							)}
 						</div>
@@ -144,7 +143,7 @@ function EditProfile() {
 								{...register('contactNumber', {
 									required: {
 										value: true,
-										message: 'Please enter your Contact Number.',
+										message: 'Please enter your Contact Number*',
 									},
 									maxLength: { value: 12, message: 'Invalid Contact Number' },
 									minLength: { value: 10, message: 'Invalid Contact Number' },
@@ -152,7 +151,7 @@ function EditProfile() {
 								defaultValue={user?.additionalDetails?.contactNumber}
 							/>
 							{errors.contactNumber && (
-								<span className="-mt-1 text-[12px] text-yellow-100">
+								<span className="-mt-1 text-[12px] text-red-400">
 									{errors.contactNumber.message}
 								</span>
 							)}
@@ -171,7 +170,7 @@ function EditProfile() {
 								defaultValue={user?.additionalDetails?.about}
 							/>
 							{errors.about && (
-								<span className="-mt-1 text-[12px] text-yellow-100">Please enter your About.</span>
+								<span className="-mt-1 text-[12px] text-red-400">Please enter your About*</span>
 							)}
 						</div>
 					</div>

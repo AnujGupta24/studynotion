@@ -27,7 +27,7 @@ function VerifyEmail() {
 	};
 
 	return (
-		<div className="text-white flex justify-center items-center h-screen">
+		<div className="text-white flex justify-center items-center h-screen w-10/12 mx-auto max-w-maxContent">
 			{loading ? (
 				<div className="loader"></div>
 			) : (

@@ -35,7 +35,7 @@ function UpdatePassword() {
 	};
 
 	return (
-		<div className="text-white flex justify-center items-center h-screen">
+		<div className="text-white flex justify-center items-center h-screen mx-auto w-10/12 max-w-maxContent">
 			{loading ? (
 				<div className="loader"></div>
 			) : (
