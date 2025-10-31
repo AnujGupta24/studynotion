@@ -62,11 +62,7 @@ exports.updateSection = async (req, res) => {
 		}
 
 		// update data
-		const section = await Section.findByIdAndUpdate(
-			sectionId,
-			{ sectionName },
-			{ new: true }
-		);
+		const section = await Section.findByIdAndUpdate(sectionId, { sectionName }, { new: true });
 
 		// if section not found
 		if (!section) {
@@ -101,11 +97,7 @@ exports.deleteSection = async (req, res) => {
 		await Section.findByIdAndDelete(sectionId);
 
 		// todo[testing]:- do we need to delete the entry from the courseSchema?
-		await Course.findByIdAndUpdate(
-			courseId,
-			{ $pull: { courseContent: sectionId } },
-			{ new: true }
-		);
+		await Course.findByIdAndUpdate(courseId, { $pull: { courseContent: sectionId } }, { new: true });
 
 		// return res
 		return res.status(200).json({

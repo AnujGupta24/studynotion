@@ -2,6 +2,7 @@ const Course = require('../models/course');
 const Category = require('../models/category');
 const User = require('../models/User');
 const { uploadImageToCloudinary } = require('../utils/imageUploader');
+
 // Function to create a new course
 exports.createCourse = async (req, res) => {
 	try {
@@ -9,30 +10,14 @@ exports.createCourse = async (req, res) => {
 		const userId = req.user.id;
 
 		// Get all required fields from request body
-		let {
-			courseName,
-			courseDescription,
-			whatYouWillLearn,
-			price,
-			tag,
-			category,
-			status,
-			instructions,
-		} = req.body;
+		let { courseName, courseDescription, whatYouWillLearn, price, tag, category, status, instructions } =
+			req.body;
 
 		// Get thumbnail image from request files
 		const thumbnail = req.files.thumbnailImage;
 
 		// Check if any of the required fields are missing
-		if (
-			!courseName ||
-			!courseDescription ||
-			!whatYouWillLearn ||
-			!price ||
-			!tag ||
-			!thumbnail ||
-			!category
-		) {
+		if (!courseName || !courseDescription || !whatYouWillLearn || !price || !tag || !thumbnail || !category) {
 			return res.status(400).json({
 				success: false,
 				message: 'All Fields are Mandatory',
@@ -62,11 +47,9 @@ exports.createCourse = async (req, res) => {
 			});
 		}
 		// Upload the Thumbnail to Cloudinary
-		const thumbnailImage = await uploadImageToCloudinary(
-			thumbnail,
-			process.env.FOLDER_NAME
-		);
+		const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME);
 		console.log(thumbnailImage);
+
 		// Create a new course with the given details
 		const newCourse = await Course.create({
 			courseName,
@@ -83,14 +66,8 @@ exports.createCourse = async (req, res) => {
 
 		// Add the new course to the User Schema of the Instructor
 		await User.findByIdAndUpdate(
-			{
-				_id: instructorDetails._id,
-			},
-			{
-				$push: {
-					courses: newCourse._id,
-				},
-			},
+			{ _id: instructorDetails._id },
+			{ $push: { courses: newCourse._id } },
 			{ new: true }
 		);
 		// Add the new course to the Categories
