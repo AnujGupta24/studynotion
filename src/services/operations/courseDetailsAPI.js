@@ -138,8 +138,8 @@ export const editCourseDetails = async (data, token) => {
 
 // create a section
 export const createSection = async (data, token) => {
-	const toastId = toast.loading('Loading...');
 	let result = null;
+	const toastId = toast.loading('Loading...');
 
 	try {
 		const response = await apiConnector('POST', CREATE_SECTION_API, data, {

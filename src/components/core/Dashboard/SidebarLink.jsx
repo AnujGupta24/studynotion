@@ -2,12 +2,12 @@ import * as Icons from 'react-icons/vsc';
 import { useDispatch } from 'react-redux';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
 
+import { resetCourseState } from '../../../slices/courseSlice';
+
 function SidebarLink({ link, iconName }) {
 	// to get the icons dynamically
 	const Icon = Icons[iconName];
 	const location = useLocation();
-
-	// pending
 	const dispatch = useDispatch();
 
 	const matchRoute = (route) => {
@@ -17,6 +17,7 @@ function SidebarLink({ link, iconName }) {
 	return (
 		<NavLink
 			to={link.path}
+			onClick={() => dispatch(resetCourseState())}
 			className={`relative px-8 py-2 text-sm font-medium ${
 				matchRoute(link.path) ? 'bg-yellow-800 text-yellow-50' : 'bg-opacity-0 text-richblack-300'
 			} transition-all duration-200`}

@@ -113,11 +113,11 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 		const result = await createSubSection(formData, token);
 		if (result) {
 			// update the structure of course
-			const updatedCourseContent = course.courseContent.map((section) =>
-				section._id === modalData ? result : section
-			);
-			const updatedCourse = { ...course, courseContent: updatedCourseContent };
-			dispatch(setCourse(updatedCourse));
+			// const updatedCourseContent = course.courseContent.map((section) =>
+			// 	section._id === modalData ? result : section
+			// );
+			// const updatedCourse = { ...course, courseContent: updatedCourseContent };
+			dispatch(setCourse(result));
 		}
 		setModalData(null);
 		setLoading(false);

@@ -130,9 +130,8 @@ function CourseInformationForm() {
 			} else {
 				toast.error('No changes made to the form');
 			}
-			console.log('printing formData', formData);
-			console.log('printing result', result);
 			return;
+			// console.log('printing result', result);
 		}
 
 		// create a new course
@@ -148,7 +147,6 @@ function CourseInformationForm() {
 		formData.append('thumbnailImage', data.courseImage);
 
 		setLoading(true);
-		console.log('before api call');
 		const result = await addCourseDetails(formData, token);
 		if (result) {
 			dispatch(setStep(2));

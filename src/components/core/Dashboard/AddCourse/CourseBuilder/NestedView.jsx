@@ -53,6 +53,7 @@ function NestedView({ handleChangeEditSectionName }) {
 	return (
 		<>
 			<div className="rounded-lg bg-richblack-700 p-6 px-8" id="nestedViewContainer">
+				{console.log('course', course)}
 				{course?.courseContent?.map((section) => (
 					<details key={section._id} open>
 						{/* section dropdown */}

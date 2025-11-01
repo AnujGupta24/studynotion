@@ -3,11 +3,11 @@ import IconBtn from '../../../../common/IconBtn';
 import { IoAddCircleOutline } from 'react-icons/io5';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BiRightArrow } from 'react-icons/bi';
 import { setCourse, setEditCourse, setStep } from '../../../../../slices/courseSlice';
 import toast from 'react-hot-toast';
 import { createSection, updateSection } from '../../../../../services/operations/courseDetailsAPI';
 import NestedView from './NestedView';
+import { GrFormNextLink } from 'react-icons/gr';
 
 function CourseBuilderForm() {
 	const {
@@ -75,7 +75,7 @@ function CourseBuilderForm() {
 	};
 
 	const goBack = () => {
-		dispatch(setStep(2));
+		dispatch(setStep(1));
 		dispatch(setEditCourse(true));
 	};
 
@@ -116,13 +116,14 @@ function CourseBuilderForm() {
 
 				<div className="flex items-end gap-x-4">
 					<IconBtn
-						type="submit"
+						type="Submit"
 						text={editSectionName ? 'Edit Section Name' : 'Create Section'}
 						outline={true}
 						disabled={loading}
 					>
 						<IoAddCircleOutline size={20} className="text-yellow-50" />
 					</IconBtn>
+
 					{editSectionName && (
 						<button
 							type="button"
@@ -136,7 +137,7 @@ function CourseBuilderForm() {
 			</form>
 
 			{/* NestedView section-Subsection */}
-			{course.courseContent.length > 0 && (
+			{course?.courseContent?.length > 0 && (
 				<NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
 			)}
 
@@ -148,7 +149,7 @@ function CourseBuilderForm() {
 					Back
 				</button>
 				<IconBtn disabled={loading} text="Next" onclick={goToNext}>
-					<BiRightArrow size={20} />
+					<GrFormNextLink size={20} />
 				</IconBtn>
 			</div>
 		</div>
