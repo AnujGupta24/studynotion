@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RxDropdownMenu } from 'react-icons/rx';
 import { MdEdit } from 'react-icons/md';
@@ -20,6 +20,12 @@ function NestedView({ handleChangeEditSectionName }) {
 	const [viewSubSection, setViewSubSection] = useState(null);
 	const [editSubSection, setEditSubSection] = useState(null);
 
+	useEffect(() => {
+		console.log(addSubSection, 'status of addSubSection');
+		console.log(viewSubSection, 'status of viewSubSection');
+		console.log(editSubSection, 'status of editSubSection');
+	}, [addSubSection, viewSubSection, editSubSection]);
+
 	// to keep track of confirmation modal
 	const [confirmationModal, setConfirmationModal] = useState(null);
 
@@ -29,9 +35,10 @@ function NestedView({ handleChangeEditSectionName }) {
 			courseId: course._id,
 			token,
 		});
+		console.log('printing after delete section', result);
 
 		if (result) {
-			dispatch(setCourse(result));
+			dispatch(setCourse(result?.data));
 		}
 		setConfirmationModal(null);
 	};
@@ -53,7 +60,6 @@ function NestedView({ handleChangeEditSectionName }) {
 	return (
 		<>
 			<div className="rounded-lg bg-richblack-700 p-6 px-8" id="nestedViewContainer">
-				{console.log('course', course)}
 				{course?.courseContent?.map((section) => (
 					<details key={section._id} open>
 						{/* section dropdown */}

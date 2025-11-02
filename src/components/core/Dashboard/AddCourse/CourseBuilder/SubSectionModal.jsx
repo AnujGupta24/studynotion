@@ -17,10 +17,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 		getValues,
 	} = useForm();
 
-	console.log('view', view);
-	console.log('edit', edit);
-	console.log('add', add);
-
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(false);
 	const { course } = useSelector((state) => state.course);
@@ -55,7 +51,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 		console.log('changes after editing form values:', currentValues);
 
 		const formData = new FormData();
-		console.log('Values After Editing form values:', currentValues);
 		formData.append('sectionId', modalData.sectionId);
 		formData.append('subSectionId', modalData._id);
 
@@ -102,6 +97,7 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 			return;
 		}
 
+		// add
 		const formData = new FormData();
 		formData.append('sectionId', modalData);
 		formData.append('title', data.lectureTitle);
@@ -109,15 +105,15 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 		formData.append('video', data.lectureVideo);
 		setLoading(true);
 
-		// create
 		const result = await createSubSection(formData, token);
+
 		if (result) {
-			// update the structure of course
-			// const updatedCourseContent = course.courseContent.map((section) =>
-			// 	section._id === modalData ? result : section
-			// );
-			// const updatedCourse = { ...course, courseContent: updatedCourseContent };
-			dispatch(setCourse(result));
+			const updatedCourseContent = course.courseContent.map((section) =>
+				section._id === modalData ? result : section
+			);
+
+			const updatedCourse = { ...course, courseContent: updatedCourseContent };
+			dispatch(setCourse(updatedCourse));
 		}
 		setModalData(null);
 		setLoading(false);
@@ -192,6 +188,7 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 					{!view && (
 						<div className="flex justify-end">
 							<IconBtn
+								// type={SubmitEvent}
 								disabled={loading}
 								text={loading ? 'Loading..' : edit ? 'Save Changes' : 'Save'}
 							/>

@@ -1,5 +1,6 @@
 const Section = require('../models/section');
 const Course = require('../models/course');
+const SubSection = require('../models/subSection');
 
 // createSection
 exports.createSection = async (req, res) => {
@@ -50,39 +51,28 @@ exports.createSection = async (req, res) => {
 // updateSection
 exports.updateSection = async (req, res) => {
 	try {
-		// data fetch
-		const { sectionName, sectionId } = req.body;
-
-		// validation
-		if (!sectionName || !sectionId) {
-			return res.status(400).json({
-				success: false,
-				message: 'All fields are required',
-			});
-		}
-
-		// update data
+		const { sectionName, sectionId, courseId } = req.body;
 		const section = await Section.findByIdAndUpdate(sectionId, { sectionName }, { new: true });
 
-		// if section not found
-		if (!section) {
-			return res.status(404).json({
-				success: false,
-				message: 'Section not found',
-			});
-		}
+		const course = await Course.findById(courseId)
+			.populate({
+				path: 'courseContent',
+				populate: {
+					path: 'subSection',
+				},
+			})
+			.exec();
 
-		// return res
-		return res.status(200).json({
+		res.status(200).json({
 			success: true,
-			message: 'Section updated successfully',
-			section,
+			message: section,
+			data: course,
 		});
 	} catch (error) {
-		console.log(error);
-		return res.status(500).json({
+		console.error('Error updating section:', error);
+		res.status(500).json({
 			success: false,
-			message: 'Something went wrong while updating the section',
+			message: 'Internal server error',
 		});
 	}
 };
@@ -90,25 +80,46 @@ exports.updateSection = async (req, res) => {
 // deleteSection
 exports.deleteSection = async (req, res) => {
 	try {
-		// get id - assuming we getting it using params
 		const { sectionId, courseId } = req.body;
+		await Course.findByIdAndUpdate(courseId, {
+			$pull: {
+				courseContent: sectionId,
+			},
+		});
+		const section = await Section.findById(sectionId);
+		console.log('sectionId:-', sectionId, 'courseId:-', courseId);
+		if (!section) {
+			return res.status(404).json({
+				success: false,
+				message: 'Section not Found',
+			});
+		}
 
-		//use findanddelete
+		//delete sub section
+		await SubSection.deleteMany({ _id: { $in: section.subSection } });
+
 		await Section.findByIdAndDelete(sectionId);
 
-		// todo[testing]:- do we need to delete the entry from the courseSchema?
-		await Course.findByIdAndUpdate(courseId, { $pull: { courseContent: sectionId } }, { new: true });
+		//find the updated course and return
+		const course = await Course.findById(courseId)
+			.populate({
+				path: 'courseContent',
+				populate: {
+					path: 'subSection',
+				},
+			})
+			.exec();
 
-		// return res
-		return res.status(200).json({
+		res.status(200).json({
 			success: true,
-			message: 'Section deleted successfully',
+			message: 'Section deleted',
+			data: course,
 		});
 	} catch (error) {
-		console.log(error);
-		return res.status(500).json({
+		console.error('Error deleting section:', error);
+		res.status(500).json({
 			success: false,
-			message: 'Something went wrong while deleting the section',
+			message: 'Internal server error',
 		});
 	}
 };

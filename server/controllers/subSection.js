@@ -5,53 +5,47 @@ const { uploadImageToCloudinary } = require('../utils/imageUploader');
 // createSubSection:-
 exports.createSubSection = async (req, res) => {
 	try {
-		// data fetch
-		const { sectionId, title, description, timeDuration } = req.body;
-		// extract file/video
-		const video = req.files.videoFile;
+		const { title, description, sectionId } = req.body;
+		const video = req.files.video;
 
-		// validation
-		if (!sectionId || !title || !timeDuration || !description || !video) {
+		if (!title || !description || !video || !sectionId) {
 			return res.status(400).json({
 				success: false,
 				message: 'All fields are required',
 			});
 		}
+		// Upload lecture to the clodinary
+		const uploadVideo = await uploadImageToCloudinary(video, process.env.FOLDER_NAME);
 
-		// upload to cloudinary
-		const uploadDetails = await uploadImageToCloudinary(
-			video,
-			process.env.FOLDER_NAME
-		);
-
-		// create a sub section
-		const subSectionDetails = await SubSection.create({
-			title,
-			timeDuration,
-			description,
-			videoUrl: uploadDetails.secure_url,
+		// Create new subsection
+		const newSubSection = await SubSection.create({
+			title: title,
+			timeDuration: `${uploadVideo.duration}`,
+			description: description,
+			videoURL: uploadVideo.secure_url,
 		});
 
-		// update section with this sub section objectId
+		// provide new created subsection id to the section
 		const updatedSection = await Section.findByIdAndUpdate(
 			{ _id: sectionId },
-			{ $push: { subSection: subSectionDetails._id } },
+			{
+				$push: {
+					subSection: newSubSection._id,
+				},
+			},
 			{ new: true }
-		)
-			.populate('subSection')
-			.exec();
+		).populate('subSection');
 
-		// return res
 		return res.status(200).json({
 			success: true,
-			message: 'SubSection created successfully',
-			updatedSection,
+			message: 'New sub section created successfully',
+			data: updatedSection,
 		});
 	} catch (error) {
-		console.error(error);
-		return res.status(500).json({
+		return res.status(400).json({
 			success: false,
-			message: 'Something went wrong while creating the subsection',
+			message: 'Something went wrong while creating new sub section ',
+			error: error.message,
 		});
 	}
 };
@@ -78,19 +72,14 @@ exports.updateSubSection = async (req, res) => {
 		}
 		if (req.files && req.files.video !== undefined) {
 			const video = req.files.video;
-			const uploadDetails = await uploadImageToCloudinary(
-				video,
-				process.env.FOLDER_NAME
-			);
+			const uploadDetails = await uploadImageToCloudinary(video, process.env.FOLDER_NAME);
 			subSection.videoUrl = uploadDetails.secure_url;
 			subSection.timeDuration = `${uploadDetails.duration}`;
 		}
 
 		await subSection.save();
 
-		const updatedSection = await Section.findById(sectionId).populate(
-			'subSection'
-		);
+		const updatedSection = await Section.findById(sectionId).populate('subSection');
 
 		return res.json({
 			success: true,
@@ -118,21 +107,13 @@ exports.deleteSubSection = async (req, res) => {
 				},
 			}
 		);
-		const subSection = await SubSection.findByIdAndDelete({
-			_id: subSectionId,
-		});
+		const subSection = await SubSection.findByIdAndDelete({ _id: subSectionId });
 
 		if (!subSection) {
-			return res.status(404).json({
-				success: false,
-				message: 'SubSection not found',
-			});
+			return res.status(404).json({ success: false, message: 'SubSection not found' });
 		}
 
-		// updated section
-		const updatedSection = await Section.findById(sectionId).populate(
-			'subSection'
-		);
+		const updatedSection = await Section.findById(sectionId).populate('subSection');
 
 		return res.json({
 			success: true,

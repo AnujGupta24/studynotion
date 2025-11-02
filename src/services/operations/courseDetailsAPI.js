@@ -152,7 +152,7 @@ export const createSection = async (data, token) => {
 		}
 
 		toast.success('Course Section Created');
-		result = response?.data?.updatedCourse;
+		result = response?.data?.updatedCourseDetails;
 	} catch (error) {
 		console.log('CREATE SECTION API ERROR............', error);
 		toast.error(error.message);
@@ -178,6 +178,7 @@ export const createSubSection = async (data, token) => {
 
 		toast.success('Lecture Added');
 		result = response?.data?.data;
+		console.log('createSubSection result', result);
 	} catch (error) {
 		console.log('CREATE SUB-SECTION API ERROR............', error);
 		toast.error(error.message);
@@ -245,19 +246,21 @@ export const deleteSection = async (data, token) => {
 		const response = await apiConnector('POST', DELETE_SECTION_API, data, {
 			Authorization: `Bearer ${token}`,
 		});
-		console.log('DELETE SECTION API RESPONSE............', response);
+		console.log('DELETE SECTION API RESPONSE ............', response);
 
 		if (!response?.data?.success) {
 			throw new Error('Could Not Delete Section');
 		}
 
 		toast.success('Course Section Deleted');
-		result = response?.data?.data;
+		result = response?.data;
+		console.log('delete section result', result);
 	} catch (error) {
 		console.log('DELETE SECTION API ERROR............', error);
 		toast.error(error.message);
 	}
 	toast.dismiss(toastId);
+
 	return result;
 };
 // delete a subsection
