@@ -287,7 +287,6 @@ exports.getInstructorCourses = async (req, res) => {
 // Delete the Course
 exports.deleteCourse = async (req, res) => {
 	try {
-		console.log('request reached in backend Delete course function ');
 		const { courseId } = req.body;
 
 		// Find the course
@@ -307,10 +306,8 @@ exports.deleteCourse = async (req, res) => {
 		for (const sectionId of courseSections) {
 			// Delete sub-sections of the section
 			const section = await Section.findById(sectionId);
-			console.log('Printing section 424', section);
 			if (section) {
 				const subSections = section.subSection;
-				console.log('Printing subSection 427', subSections);
 				for (const subSectionId of subSections) {
 					await SubSection.findByIdAndDelete(subSectionId);
 				}
