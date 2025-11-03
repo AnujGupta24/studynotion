@@ -9,18 +9,27 @@ function Upload({ name, label, register, setValue, errors, video = false, viewDa
 	const [previewSource, setPreviewSource] = useState(viewData ? viewData : editData ? editData : '');
 
 	const onDrop = (acceptedFiles) => {
+		console.log('acceptedFiles', acceptedFiles);
 		const file = acceptedFiles[0];
-		if (file) {
+		if (!file) return;
+
+		if (video) {
+			const url = URL.createObjectURL(file);
+			setPreviewSource(url);
+		} else {
 			previewFile(file);
-			setSelectedFile(file);
 		}
+
+		setSelectedFile(file);
 	};
 
+	// Dropzone setup
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		accept: !video ? { 'image/*': ['.jpeg', '.jpg', '.png'] } : { 'video/*': ['.mp4'] },
 		onDrop,
 	});
 
+	// Converts image file → base64 for preview
 	const previewFile = (file) => {
 		console.log('uplaod', file);
 		const reader = new FileReader();
@@ -29,14 +38,24 @@ function Upload({ name, label, register, setValue, errors, video = false, viewDa
 			setPreviewSource(reader.result);
 		};
 	};
-
+	// Register the field in React Hook Form
 	useEffect(() => {
 		register(name, { required: true });
 	}, [name, register]);
 
+	// Sync selected file with form state
 	useEffect(() => {
 		setValue(name, selectedFile);
 	}, [selectedFile, name, setValue]);
+
+	// Cleanup blob URLs (avoid memory leaks)
+	useEffect(() => {
+		return () => {
+			if (previewSource && video) {
+				URL.revokeObjectURL(previewSource);
+			}
+		};
+	}, [previewSource, video]);
 
 	return (
 		<div className="flex flex-col space-y-2">
@@ -51,23 +70,27 @@ function Upload({ name, label, register, setValue, errors, video = false, viewDa
 				{previewSource ? (
 					<div className="flex w-full flex-col p-6">
 						{!video ? (
+							// image preview
 							<img
 								src={previewSource}
 								alt="Preview"
 								className="h-full w-full rounded-md object-cover"
 							/>
 						) : (
+							// video preview
 							<div className="relative pb-[56.25%] h-0 overflow-hidden rounded-md">
 								<ReactPlayer
 									url={previewSource}
 									controls
-									playsinline
+									playsInline
 									width="100%"
 									height="100%"
 									className="absolute top-0 left-0"
 								/>
+								{console.log('ReactPlayer previewSource:', previewSource)}
 							</div>
 						)}
+						{/* Cancel or remove file  */}
 						{!viewData && (
 							<button
 								type="button"

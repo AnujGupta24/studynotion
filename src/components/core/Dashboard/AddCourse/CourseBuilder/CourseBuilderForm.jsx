@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import IconBtn from '../../../../common/IconBtn';
 import { IoAddCircleOutline } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCourse, setEditCourse, setStep } from '../../../../../slices/courseSlice';
 import toast from 'react-hot-toast';
@@ -62,6 +62,7 @@ function CourseBuilderForm() {
 	const cancelEdit = () => {
 		setEditSectionName(null);
 		setValue('sectionName', '');
+		console.log(setValue('sectionName'));
 	};
 
 	const handleChangeEditSectionName = (sectionId, sectionName) => {
@@ -75,7 +76,6 @@ function CourseBuilderForm() {
 
 	const goToNext = () => {
 		if (course?.courseContent?.length === 0) {
-			console.log('this line 77 ran ');
 			toast.error('Please add atleast one section');
 			return;
 		}
@@ -85,22 +85,6 @@ function CourseBuilderForm() {
 		}
 		dispatch(setStep(3));
 	};
-
-	// useEffect(() => {
-	// 	// Run the same validation inline so the effect dependencies are accurate.
-	// 	if (!course) return;
-	// 	console.log(course, 'line 92 jk');
-	// 	if (course?.courseContent?.length === 0) {
-	// 		console.log('this line 94 ran ');
-	// 		toast.error('Please add atleast one section');
-	// 		return;
-	// 	}
-	// 	if (course?.courseContent?.some((section) => section.subSection.length === 0)) {
-	// 		toast.error('Please add atleast one lecture in each section');
-	// 		return;
-	// 	}
-	// 	// dispatch(setStep(3));
-	// }, [course, dispatch]);
 
 	const goBack = () => {
 		dispatch(setStep(1));

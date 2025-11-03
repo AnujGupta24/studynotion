@@ -114,6 +114,7 @@ export const addCourseDetails = async (data, token) => {
 export const editCourseDetails = async (data, token) => {
 	const toastId = toast.loading('Loading...');
 	let result = null;
+	console.log('EDIT_COURSE_API URL:', EDIT_COURSE_API);
 
 	try {
 		const response = await apiConnector('POST', EDIT_COURSE_API, data, {
