@@ -80,8 +80,6 @@ function CourseInformationForm() {
 
 	// handle next button click
 	const onSubmit = async (data) => {
-		console.log(data);
-
 		if (editCourse) {
 			const currentValues = getValues();
 			console.log('changes after editing form values:', currentValues);
@@ -131,7 +129,6 @@ function CourseInformationForm() {
 				toast.error('No changes made to the form');
 			}
 			return;
-			// console.log('printing result', result);
 		}
 
 		// create a new course

@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaCheck } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
 import CourseInformationForm from './CourseInformation/CourseInformationForm';
@@ -17,7 +18,7 @@ function RenderSteps() {
 		<>
 			<div className="relative flex justify-center w-full">
 				{steps.map((item) => (
-					<>
+					<React.Fragment key={item.id}>
 						<div className="flex flex-col items-center" key={item.id}>
 							<button
 								className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
@@ -37,7 +38,7 @@ function RenderSteps() {
 								}`}
 							></div>
 						)}
-					</>
+					</React.Fragment>
 				))}
 			</div>
 

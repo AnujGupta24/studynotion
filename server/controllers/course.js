@@ -21,7 +21,16 @@ exports.createCourse = async (req, res) => {
 		const thumbnail = req.files.thumbnailImage;
 
 		// Check if any of the required fields are missing
-		if (!courseName || !courseDescription || !whatYouWillLearn || !price || !tag || !thumbnail || !category) {
+		if (
+			!courseName ||
+			!courseDescription ||
+			!whatYouWillLearn ||
+			!price ||
+			!tag ||
+			!thumbnail ||
+			!category ||
+			!instructions
+		) {
 			return res.status(400).json({
 				success: false,
 				message: 'All Fields are Mandatory',
@@ -74,6 +83,7 @@ exports.createCourse = async (req, res) => {
 			{ $push: { courses: newCourse._id } },
 			{ new: true }
 		);
+
 		// Add the new course to the Categories
 		await Category.findByIdAndUpdate({ _id: category }, { $push: { course: newCourse._id } }, { new: true });
 		// Return the new course and a success message

@@ -8,7 +8,6 @@ function ChipInput({ label, name, placeholder, register, errors, setValue }) {
 
 	useEffect(() => {
 		if (editCourse) {
-			console.log('chipInput courses', course);
 			setChips(course?.tag);
 		}
 		register(name, { required: true, validate: (value) => value.length > 0 });
