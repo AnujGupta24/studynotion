@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Course = require('../models/course');
 const RatingAndReview = require('../models/ratingAndReview');
 
@@ -64,6 +65,7 @@ exports.createRating = async (req, res) => {
 		return res.status(500).json({
 			success: false,
 			message: 'Unable to create Rating',
+			error: error.message,
 		});
 	}
 };
@@ -107,6 +109,7 @@ exports.getAverageRating = async (req, res) => {
 		return res.status(500).json({
 			success: false,
 			message: 'Unable to get average rating',
+			error: error.message,
 		});
 	}
 };
@@ -137,6 +140,7 @@ exports.getAllRating = async (req, res) => {
 		return res.status(500).json({
 			success: false,
 			message: 'Unable to get all Ratings',
+			error: error.message,
 		});
 	}
 };

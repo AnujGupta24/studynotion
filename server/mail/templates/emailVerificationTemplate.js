@@ -1,4 +1,4 @@
-const otpTemplate = (email, otp) => {
+const otpTemplate = (otp) => {
 	return `<!DOCTYPE html>
 	<html>
 	

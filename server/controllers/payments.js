@@ -2,9 +2,7 @@ const { instance } = require('../config/razorpay');
 const Course = require('../models/course');
 const User = require('../models/User');
 const mailSender = require('../utils/mailSender');
-const {
-	courseEnrollmentEmail,
-} = require('../mail/templates/courseEnrollmentEmail');
+const { courseEnrollmentEmail } = require('../mail/templates/courseEnrollmentEmail');
 const mongoose = require('mongoose');
 
 // capture the payment and initiate the razorpay order:
@@ -46,7 +44,8 @@ exports.capturePayment = async (req, res) => {
 		console.log(error);
 		return res.status(500).json({
 			success: false,
-			message: 'invalid course details' || error.message,
+			message: 'invalid course details',
+			error: error.message,
 		});
 	}
 
