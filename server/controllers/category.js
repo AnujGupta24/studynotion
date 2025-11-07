@@ -39,10 +39,7 @@ exports.createCategory = async (req, res) => {
 //  all Category
 exports.showAllCategories = async (req, res) => {
 	try {
-		const allCategories = await Category.find(
-			{},
-			{ name: true, description: true }
-		);
+		const allCategories = await Category.find({}, { name: true, description: true });
 		res.status(200).json({
 			success: true,
 			message: 'All category returned successfully',
@@ -71,10 +68,11 @@ exports.categoryPageDetails = async (req, res) => {
 				populate: 'ratingAndReviews',
 			})
 			.exec();
-		console.log(selectedCategory);
+		console.log('selectedCategory-----', selectedCategory);
 
 		//Validation
 		if (!selectedCategory) {
+			console.log('category not found');
 			return res.status(404).json({
 				success: false,
 				message: 'No cource found for this category',
@@ -98,9 +96,7 @@ exports.categoryPageDetails = async (req, res) => {
 			.exec();
 
 		let differentCategory = await Category.findOne(
-			categoriesExceptSelected[
-				getRandomInt(categoriesExceptSelected.length)
-			]._id
+			categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]._id
 		)
 			.populate({
 				path: 'courses',
@@ -111,7 +107,6 @@ exports.categoryPageDetails = async (req, res) => {
 
 		// Get top-selling courses across all categories
 		const allCategories = await Category.find()
-
 			.populate({
 				path: 'courses',
 				match: { status: 'Published' },
@@ -120,13 +115,9 @@ exports.categoryPageDetails = async (req, res) => {
 				},
 			})
 			.exec();
-		const allCourses = allCategories.flatMap(
-			(category) => category.courses
-		);
-		const mostSellingCourses = allCourses
-			.sort((a, b) => b.sold - a.sold)
-			.slice(0, 10);
-		console.log('mostSellingCourses COURSE', mostSellingCourses);
+		const allCourses = allCategories.flatMap((category) => category.courses);
+		const mostSellingCourses = allCourses.sort((a, b) => b.sold - a.sold).slice(0, 10);
+		console.log('mostSellingCourses COURSE----', mostSellingCourses);
 
 		return res.status(200).json({
 			success: true,
@@ -140,7 +131,7 @@ exports.categoryPageDetails = async (req, res) => {
 		console.log(error);
 		return res.status(500).json({
 			success: false,
-			message: 'Error while getting category page details ',
+			message: 'Error while getting category page details',
 		});
 	}
 };
