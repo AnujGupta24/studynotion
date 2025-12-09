@@ -54,7 +54,7 @@ function ContactUsForm() {
 			<div className="flex flex-col gap-5 lg:flex-row ">
 				{/* first name */}
 				<div className="flex flex-col gap-2 lg:w-[48%]">
-					<label className="text-richblack-50 text-xl" htmlFor="firstname">
+					<label className="label-style" htmlFor="firstname">
 						First Name
 					</label>
 					<input
@@ -71,7 +71,7 @@ function ContactUsForm() {
 
 				{/* last Name */}
 				<div className="flex flex-col gap-2 lg:w-[48%]">
-					<label htmlFor="lastname" className="text-richblack-50 text-xl">
+					<label htmlFor="lastname" className="label-style">
 						Last Name
 					</label>
 					<input
@@ -86,7 +86,7 @@ function ContactUsForm() {
 
 			{/* email */}
 			<div className="flex flex-col gap-2">
-				<label htmlFor="email" className="text-richblack-50 text-xl">
+				<label htmlFor="email" className="label-style">
 					Email Address
 				</label>
 				<input
@@ -104,7 +104,7 @@ function ContactUsForm() {
 
 			{/* phoneno */}
 			<div className="flex flex-col gap-2">
-				<label className="text-richblack-50 text-xl" htmlFor="phonenumber">
+				<label className="label-style" htmlFor="phonenumber">
 					Phone Number
 				</label>
 				<div className="flex gap-5">
@@ -144,7 +144,7 @@ function ContactUsForm() {
 
 			{/* message */}
 			<div className="flex flex-col text-white gap-2">
-				<label className="text-richblack-50 text-xl" htmlFor="message">
+				<label className="label-style" htmlFor="message">
 					Message
 				</label>
 				<textarea

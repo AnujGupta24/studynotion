@@ -2,6 +2,8 @@ import { HiUsers } from 'react-icons/hi';
 import { ImTree } from 'react-icons/im';
 
 function CourseCard({ cardData, currentCard, setCurrentCard }) {
+	console.log(cardData, 'carddata.........');
+
 	return (
 		<div
 			className={`w-fit h-fit ${
@@ -11,26 +13,21 @@ function CourseCard({ cardData, currentCard, setCurrentCard }) {
 			}  text-richblack-25 box-border cursor-pointer`}
 			onClick={() => setCurrentCard(cardData?.heading)}
 		>
-			<div className="border-b-[2px] border-richblack-400 border-dashed p-6 flex flex-col gap-3">
+			<div className="border-b-2 border-richblack-400 border-dashed p-6 flex flex-col gap-3">
 				<div
 					className={` ${
-						currentCard === cardData?.heading &&
-						'text-richblack-800'
+						currentCard === cardData?.heading && 'text-richblack-800'
 					} font-semibold text-[20px]`}
 				>
 					{cardData?.heading}
 				</div>
 
-				<div className="text-richblack-400">
-					{cardData?.description}
-				</div>
+				<div className="text-richblack-400">{cardData?.description}</div>
 			</div>
 
 			<div
 				className={`flex justify-between ${
-					currentCard === cardData?.heading
-						? 'text-blue-300'
-						: 'text-richblack-300'
+					currentCard === cardData?.heading ? 'text-blue-300' : 'text-richblack-300'
 				} px-6 py-3 font-medium`}
 			>
 				{/* Level */}
@@ -42,7 +39,7 @@ function CourseCard({ cardData, currentCard, setCurrentCard }) {
 				{/* Flow Chart */}
 				<div className="flex items-center gap-2 text-[16px]">
 					<ImTree />
-					<p>{cardData?.lessionNumber} Lession</p>
+					<p>{cardData?.lessonNumber} Lesson</p>
 				</div>
 			</div>
 		</div>

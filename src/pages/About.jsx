@@ -47,7 +47,7 @@ function About() {
 					<div className="flex flex-col items-center gap-10 lg:flex-row justify-between">
 						{/* left box */}
 						<div className="my-16 flex lg:w-[50%] flex-col gap-10">
-							<h2 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
+							<h2 className="bg-linear-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
 								Our Founding Story
 							</h2>
 							<p className="text-base font-medium text-richblack-300 lg:w-[95%]">
@@ -87,7 +87,7 @@ function About() {
 						</div>
 						{/* right box */}b
 						<div className="mb-24 flex lg:w-[40%] flex-col gap-5">
-							<h2 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
+							<h2 className="bg-linear-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
 								<HighlightText text={'Our Mission'} />
 							</h2>
 							<p className="text-base font-medium text-richblack-300 lg:w-[95%]">

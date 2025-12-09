@@ -32,10 +32,10 @@ function VerifyEmail() {
 				<div className="loader"></div>
 			) : (
 				<div className="max-w-[500px] p-4 lg:p-8">
-					<h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
+					<h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-9.5">
 						Verify Your Email
 					</h1>
-					<p className="text-[1.125rem] leading-[1.625rem] my-4 text-richblack-100">
+					<p className="text-[1.125rem] leading-6.5 my-4 text-richblack-100">
 						A verfication code has been sent to you. Enter the code below
 					</p>
 

@@ -28,9 +28,7 @@ function CodeBlocks({
 						</div>
 					</CTAButton>
 					<CTAButton active={ctabtn2.active} linkto={ctabtn2.linkto}>
-						<div className="flex gap-2 items-center">
-							{ctabtn2.btnText}
-						</div>
+						<div className="flex gap-2 items-center">{ctabtn2.btnText}</div>
 					</CTAButton>
 				</div>
 			</div>
@@ -52,7 +50,7 @@ function CodeBlocks({
 				</div>
 
 				<div
-					className={`w-[100%]  flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2 ${backgroundGradient} rounded-lg p-2`}
+					className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2 ${backgroundGradient} rounded-lg p-2`}
 				>
 					<TypeAnimation
 						sequence={[codeblock, 2000, ' ']}

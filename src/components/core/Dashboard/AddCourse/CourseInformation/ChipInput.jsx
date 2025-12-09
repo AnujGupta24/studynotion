@@ -64,7 +64,7 @@ function ChipInput({ label, name, placeholder, register, errors, setValue }) {
 					type="text"
 					placeholder={placeholder}
 					onKeyDown={handleKeyDown}
-					className=" p-2 text-richblack-5 w-full bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+					className="form-style resize-x-none min-h-[130px] w-full"
 				/>
 			</div>
 			{errors[name] && (

@@ -37,6 +37,7 @@ function Navbar() {
 	}, []);
 
 	const matchRoute = (route) => matchPath({ path: route }, location.pathname);
+	// console.log('Matched?', matchRoute('catalog/:catalogName'));
 
 	// Close mobile menu on route change
 	useEffect(() => {
@@ -66,10 +67,12 @@ function Navbar() {
 									>
 										<p>{link.title}</p>
 										<RiArrowDropDownLine />
-										<div className="invisible absolute left-[50%] top-[50%] z-[1000] flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-2 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
+										<div className="invisible absolute left-[50%] top-[50%] z-1000 flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-2 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
 											<div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
 											{loading ? (
-												<p className="text-center">Loading...</p>
+												<div className="flex items-center justify-center w-full h-screen">
+													<div className="loader"></div>
+												</div>
 											) : subLinks.length ? (
 												subLinks.map((subLink, i) => (
 													<Link
@@ -121,12 +124,12 @@ function Navbar() {
 					{token === null && (
 						<>
 							<Link to="/login">
-								<button className="rounded-[8px] border cursor-pointer border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+								<button className="rounded-lg border cursor-pointer border-richblack-700 bg-richblack-800 px-3 py-2 text-richblack-100">
 									Log in
 								</button>
 							</Link>
 							<Link to="/signup">
-								<button className="rounded-[8px] cursor-pointer border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+								<button className="rounded-lg cursor-pointer border border-richblack-700 bg-richblack-800 px-3 py-2 text-richblack-100">
 									Sign up
 								</button>
 							</Link>

@@ -11,7 +11,7 @@ function MyCourses() {
 	const navigate = useNavigate();
 	const [courses, setCourses] = useState([]);
 
-	console.log('myxourses-==============', courses);
+	console.log('mycourses-==============', courses);
 
 	useEffect(() => {
 		const fetchCourses = async () => {

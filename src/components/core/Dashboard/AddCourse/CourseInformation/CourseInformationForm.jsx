@@ -157,7 +157,7 @@ function CourseInformationForm() {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className="space-y-4 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6"
+			className="space-y-4 rounded-md border border-richblack-700 bg-richblack-800 p-6"
 		>
 			{/* course title */}
 			<div className="flex flex-col space-y-2">
@@ -168,7 +168,7 @@ function CourseInformationForm() {
 					id="courseTitle"
 					placeholder="Enter Course Title"
 					{...register('courseTitle', { required: true })}
-					className=" p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+					className="form-style w-full"
 				/>
 				{errors.courseTitle && (
 					<span className="ml-2 text-xs tracking-wide text-pink-200">Course title is required*</span>
@@ -184,7 +184,7 @@ function CourseInformationForm() {
 					id="courseShortDesc"
 					placeholder="Enter Description"
 					{...register('courseShortDesc', { required: true })}
-					className=" p-2 text-richblack-5 min-h-[8rem] bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+					className="form-style resize-x-none min-h-[130px] w-full"
 				/>
 				{errors.courseShortDesc && (
 					<span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -207,7 +207,7 @@ function CourseInformationForm() {
 							valueAsNumber: true,
 							pattern: { value: /^(0|[1-9]\d*)(\.\d+)?$/ },
 						})}
-						className=" p-2 text-richblack-5 w-full bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md !pl-12"
+						className="form-style w-full pl-12!"
 					/>
 					<HiOutlineCurrencyRupee className="absolute left-3 top-1/2 inline-block -translate-y-1/2 text-2xl text-richblack-400" />
 				</div>
@@ -225,7 +225,7 @@ function CourseInformationForm() {
 					defaultValue=""
 					id="courseCategory"
 					{...register('courseCategory', { required: true })}
-					className=" p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+					className="form-style w-full"
 				>
 					<option value="" disabled>
 						Choose a Category
@@ -273,7 +273,7 @@ function CourseInformationForm() {
 					id="courseBenefits"
 					placeholder="Enter benefits of the course"
 					{...register('courseBenefits', { required: true })}
-					className=" p-2 text-richblack-5 min-h-[10rem] bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+					className="form-style resize-x-none min-h-[130px] w-full"
 				/>
 				{errors.courseBenefits && (
 					<span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -298,7 +298,7 @@ function CourseInformationForm() {
 					<button
 						onClick={() => dispatch(setStep(2))}
 						disabled={loading}
-						className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
+						className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-2 px-5 font-semibold text-richblack-900`}
 					>
 						Continue Wihout Saving
 					</button>

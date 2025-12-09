@@ -40,7 +40,7 @@ function RequirementField({ name, label, register, errors, setValue }) {
 					id={name}
 					value={requirement}
 					onChange={(e) => setRequirement(e.target.value)}
-					className="w-full p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+					className="form-style w-full"
 				/>
 				<button type="button" onClick={handleAddRequirement} className="font-semibold text-yellow-50">
 					Add

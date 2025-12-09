@@ -22,11 +22,11 @@ function ForgotPassword() {
 				<div className="loader"></div>
 			) : (
 				<div className="max-w-[500px] p-4 lg:p-8">
-					<h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
+					<h1 className="text-[1.875rem] font-semibold leading-9.5 text-richblack-5">
 						{!emailSent ? 'Reset Your Password' : 'Check Your Email'}
 					</h1>
 
-					<p className="my-4 text-[1.125rem] leading-[1.625rem] text-richblack-100">
+					<p className="my-4 text-[1.125rem] leading-6.5 text-richblack-100">
 						{!emailSent
 							? 'Have no fear. we will email you a link to reset your password'
 							: `we have sent the reset password link to ${email}`}
@@ -35,7 +35,7 @@ function ForgotPassword() {
 					<form onSubmit={handleOnSubmit}>
 						{!emailSent && (
 							<label className="w-full">
-								<p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+								<p className="mb-1 text-[0.875rem] leading-5.5 text-richblack-5">
 									Email Address <sup className="text-pink-200">*</sup>
 								</p>
 								<input
@@ -45,13 +45,13 @@ function ForgotPassword() {
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 									placeholder="Enter Your Email Address"
-									className="mt-1 rounded-[8px] bg-richblack-800 p-[12px] w-full"
+									className="form-style w-full"
 								/>
 							</label>
 						)}
 
 						<button
-							className="mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900"
+							className="mt-6 w-full rounded-lg bg-yellow-50 py-3 px-3 font-medium text-richblack-900"
 							type="submit"
 						>
 							{!emailSent ? 'Reset Password' : 'Resend Email'}

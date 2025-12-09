@@ -120,7 +120,7 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 	};
 
 	return (
-		<div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto  bg-opacity-10 backdrop-blur-sm">
+		<div className="fixed inset-0 z-1000 mt-0! grid h-screen w-screen place-items-center overflow-auto  bg-opacity-10 backdrop-blur-sm">
 			<div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
 				{/* Modal Header */}
 				<div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
@@ -156,7 +156,7 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 							id="lectureTitle"
 							placeholder="Enter Lecture Title"
 							{...register('lectureTitle', { required: true })}
-							className="w-full p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+							className="form-style w-full"
 						/>
 						{errors.lectureTitle && (
 							<span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -175,7 +175,7 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 							id="lectureDesc"
 							placeholder="Enter Lecture Description"
 							{...register('lectureDesc', { required: true })}
-							className="w-full p-2 text-richblack-5 bg-richblack-700 text-sm leading-6 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.5)] rounded-md "
+							className="form-style resize-x-none min-h-[130px] w-full"
 						/>
 						{errors.lectureDesc && (
 							<span className="ml-2 text-xs tracking-wide text-pink-200">

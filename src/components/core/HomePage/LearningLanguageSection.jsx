@@ -23,7 +23,7 @@ function LearningLanguageSection() {
 				<div className="flex items-center justify-center mt-3">
 					<img
 						src={know_your_progress}
-						className="object-contain -mr-[11rem]"
+						className="object-contain -mr-44"
 						alt="knowyourprogressimage "
 					/>
 					<img

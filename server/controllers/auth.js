@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mailSender = require('../utils/mailSender');
 require('dotenv').config();
+const passwordUpdated = require('../mail/templates/passwordUpdate');
 
 // sendotp:-
 exports.sendOtp = async (req, res) => {

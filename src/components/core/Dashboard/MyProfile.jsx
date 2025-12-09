@@ -14,7 +14,7 @@ function MyProfile() {
 			<h1 className="mb-10 text-3xl font-medium text-richblack-5">My Profile</h1>
 
 			{/* profile */}
-			<div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+			<div className="flex items-center justify-between rounded-md border border-richblack-700 bg-richblack-800 p-8 px-12">
 				<div className="flex items-center gap-x-4">
 					<img
 						src={user?.image}
@@ -34,7 +34,7 @@ function MyProfile() {
 			</div>
 
 			{/* About me */}
-			<div className="my-5 flex flex-col gap-y-5 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+			<div className="my-5 flex flex-col gap-y-5 rounded-md border border-richblack-700 bg-richblack-800 p-8 px-12">
 				<div className="flex w-full items-center justify-between">
 					<p className="text-lg font-semibold text-richblack-5">About</p>
 					<IconBtn
@@ -56,7 +56,7 @@ function MyProfile() {
 			</div>
 
 			{/* personal dets */}
-			<div className="my-5 flex flex-col gap-y-4 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+			<div className="my-5 flex flex-col gap-y-4 rounded-md border border-richblack-700 bg-richblack-800 p-8 px-12">
 				<div className="flex w-full items-center justify-between">
 					<p className="text-lg font-semibold text-richblack-5">Personal Details</p>
 					<IconBtn

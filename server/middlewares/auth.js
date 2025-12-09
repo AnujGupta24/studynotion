@@ -20,9 +20,9 @@ exports.auth = async (req, res, next) => {
 
 		// verify the token
 		try {
-			const decode = jwt.verify(token, process.env.JWT_SECRET);
-			console.log('who logged in decode->', decode);
-			req.user = decode;
+			const decoded = jwt.verify(token, process.env.JWT_SECRET);
+			console.log('who logged in ->', decoded);
+			req.user = decoded;
 		} catch (error) {
 			// verification issue
 			return res.status(401).json({
@@ -53,6 +53,7 @@ exports.isStudent = async (req, res, next) => {
 		}
 		next();
 	} catch (error) {
+		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'User role cannot be verified, please try again',
@@ -71,6 +72,7 @@ exports.isInstructor = async (req, res, next) => {
 		}
 		next();
 	} catch (error) {
+		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'User role cannot be verified, please try again',
@@ -92,6 +94,7 @@ exports.isAdmin = async (req, res, next) => {
 		return res.status(500).json({
 			success: false,
 			message: 'User role cannot be verified, please try again',
+			error: error.message,
 		});
 	}
 };

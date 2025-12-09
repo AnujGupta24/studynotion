@@ -65,7 +65,7 @@ function PublishCourse() {
 	};
 
 	return (
-		<div className="rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
+		<div className="rounded-md border border-richblack-700 bg-richblack-800 p-6">
 			<p className="text-2xl font-semibold text-richblack-5">Publish Settings</p>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{/* checkbox */}
@@ -87,7 +87,7 @@ function PublishCourse() {
 						disabled={loading}
 						type="button"
 						onClick={goBack}
-						className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900"
+						className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-2 px-5 font-semibold text-richblack-900"
 					>
 						Back
 					</button>
