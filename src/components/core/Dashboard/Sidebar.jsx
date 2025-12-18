@@ -26,7 +26,7 @@ function Sidebar() {
 
 	return (
 		<>
-			<div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10">
+			<div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r border-r-richblack-700 bg-richblack-800 py-10">
 				{/* dashboard user Links */}
 				<div className="flex flex-col">
 					{sidebarLinks.map((link) => {
@@ -35,7 +35,7 @@ function Sidebar() {
 					})}
 				</div>
 
-				<div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700" />
+				<div className="mx-auto mt-6 mb-6 h-px w-10/12 bg-richblack-700" />
 
 				{/* settings  */}
 				<div className="flex flex-col">

@@ -6,12 +6,10 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 // Import required modules
-import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import CourseCard from './CourseCard';
 
 function CourseSlider({ Courses }) {
-	console.log('courseSlider...', Courses);
-
 	return (
 		<>
 			{Courses?.length ? (
@@ -26,12 +24,11 @@ function CourseSlider({ Courses }) {
 					breakpoints={{
 						1024: { slidesPerView: 3 },
 					}}
-					className="max-h-120 mySwiper"
+					className="max-h-120"
 				>
 					{Courses?.map((course, i) => (
 						<SwiperSlide key={i}>
 							<CourseCard course={course} Height={'h-[250px]'} />
-							<p className="text-white">Abcdef</p>
 						</SwiperSlide>
 					))}
 				</Swiper>

@@ -40,10 +40,10 @@ exports.createSection = async (req, res) => {
 			updatedCourseDetails,
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'Something went wrong while creating the section',
+			error: error.message,
 		});
 	}
 };
@@ -87,7 +87,6 @@ exports.deleteSection = async (req, res) => {
 			},
 		});
 		const section = await Section.findById(sectionId);
-		console.log('sectionId:-', sectionId, 'courseId:-', courseId);
 		if (!section) {
 			return res.status(404).json({
 				success: false,

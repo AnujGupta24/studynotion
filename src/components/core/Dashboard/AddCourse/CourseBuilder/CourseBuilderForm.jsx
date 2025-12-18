@@ -28,8 +28,6 @@ function CourseBuilderForm() {
 		setLoading(true);
 		let result;
 
-		console.log(editSectionName, 'editSectionName ', course, 'course<--', course?.data?._id, 'courseID ');
-
 		if (editSectionName) {
 			// editting section name
 			result = await updateSection(
@@ -62,7 +60,6 @@ function CourseBuilderForm() {
 	const cancelEdit = () => {
 		setEditSectionName(null);
 		setValue('sectionName', '');
-		console.log(setValue('sectionName'));
 	};
 
 	const handleChangeEditSectionName = (sectionId, sectionName) => {

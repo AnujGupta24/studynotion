@@ -17,8 +17,6 @@ function ContactUsForm() {
 	} = useForm();
 
 	const submitContactForm = async (data) => {
-		console.log('submitContactForm data', data);
-
 		try {
 			setLoading(true);
 			const toastId = toast.loading('Loading...');
@@ -29,7 +27,7 @@ function ContactUsForm() {
 			toast.dismiss(toastId);
 			navigate('/');
 		} catch (error) {
-			console.log('contact form error', error.message);
+			toast.error(error.message);
 			setLoading(false);
 		}
 	};

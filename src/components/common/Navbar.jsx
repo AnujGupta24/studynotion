@@ -37,7 +37,6 @@ function Navbar() {
 	}, []);
 
 	const matchRoute = (route) => matchPath({ path: route }, location.pathname);
-	// console.log('Matched?', matchRoute('catalog/:catalogName'));
 
 	// Close mobile menu on route change
 	useEffect(() => {

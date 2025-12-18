@@ -4,39 +4,34 @@ require('dotenv').config();
 // auth:-
 exports.auth = async (req, res, next) => {
 	try {
-		// extract token
+		//extract token
 		const token =
-			req?.cookies?.token ||
-			req?.body?.token || //avoid this way
-			req?.header('Authorization')?.replace('Bearer ', ''); //safe way
+			req?.cookies?.token || req?.body?.token || req?.header('Authorization')?.replace('Bearer ', ''); // safe way
 
-		// if token missing return res
+		//if token missing, then return response
 		if (!token) {
 			return res.status(401).json({
 				success: false,
 				message: 'Token is missing',
 			});
 		}
-
-		// verify the token
+		//verify the token
 		try {
-			const decoded = jwt.verify(token, process.env.JWT_SECRET);
-			console.log('who logged in ->', decoded);
-			req.user = decoded;
-		} catch (error) {
-			// verification issue
+			const decode = jwt.verify(token, process.env.JWT_SECRET);
+			console.log('LOGGED IN USER--------', decode);
+			req.user = decode;
+		} catch (err) {
+			//verification - issue
 			return res.status(401).json({
 				success: false,
-				message: 'Token is invalid',
-				error: error.message,
+				message: 'Token is invalid' + err.message,
 			});
 		}
 		next();
 	} catch (error) {
 		return res.status(401).json({
 			success: false,
-			message: 'Something went wrong while validating the token',
-			error: error.message,
+			message: 'Token could not be validated' + error.message,
 		});
 	}
 };
@@ -53,10 +48,10 @@ exports.isStudent = async (req, res, next) => {
 		}
 		next();
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'User role cannot be verified, please try again',
+			error: error.message,
 		});
 	}
 };
@@ -72,10 +67,10 @@ exports.isInstructor = async (req, res, next) => {
 		}
 		next();
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'User role cannot be verified, please try again',
+			error: error.message,
 		});
 	}
 };

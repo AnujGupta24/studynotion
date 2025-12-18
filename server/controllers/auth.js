@@ -30,11 +30,9 @@ exports.sendOtp = async (req, res) => {
 			lowerCaseAlphabets: false,
 			specialChars: false,
 		});
-		console.log('OTP generated --> ', otp);
 
 		// Checking is otp is unique
 		let result = await OTP.findOne({ otp: otp });
-		console.log('send otp Result', result);
 
 		while (result) {
 			otp = otpGenerator.generate(6, {
@@ -58,7 +56,6 @@ exports.sendOtp = async (req, res) => {
 			otp,
 		});
 	} catch (error) {
-		console.log(error.message);
 		return res.status(500).json({
 			success: false,
 			message: error.message,
@@ -100,7 +97,6 @@ exports.signUp = async (req, res) => {
 
 		// find most recent otp stored for the user
 		const recentOtp = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
-		console.log('recentOtp:', recentOtp);
 
 		// validate otp
 		if (recentOtp.length === 0) {
@@ -145,10 +141,10 @@ exports.signUp = async (req, res) => {
 			user,
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'User cannot be registered, please try again',
+			error: error.message,
 		});
 	}
 };
@@ -184,14 +180,14 @@ exports.login = async (req, res) => {
 				accountType: user.accountType,
 			};
 			const token = jwt.sign(payload, process.env.JWT_SECRET, {
-				expiresIn: '24h',
+				expiresIn: '7d',
 			});
 			user.token = token;
 			user.password = undefined;
 
 			// create cookie and send res
 			const options = {
-				expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+				expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
 				httpOnly: true,
 			};
 			return res.cookie('token', token, options).status(200).json({
@@ -207,10 +203,10 @@ exports.login = async (req, res) => {
 			});
 		}
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'Login Failure, please try again',
+			error: error.message,
 		});
 	}
 };
@@ -257,10 +253,9 @@ exports.changePassword = async (req, res) => {
 					`Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
 				)
 			);
-			console.log('Email sent successfully:', emailResponse.response);
+			console.log('Email sent successfully:', emailResponse?.response);
 		} catch (error) {
 			// If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
-			console.error('Error occurred while sending email:', error);
 			return res.status(500).json({
 				success: false,
 				message: 'Error occurred while sending email',
@@ -272,7 +267,6 @@ exports.changePassword = async (req, res) => {
 		return res.status(200).json({ success: true, message: 'Password updated successfully' });
 	} catch (error) {
 		// If there's an error updating the password, log the error and return a 500 (Internal Server Error) error
-		console.error('Error occurred while updating password:', error);
 		return res.status(500).json({
 			success: false,
 			message: 'Error occurred while updating password',

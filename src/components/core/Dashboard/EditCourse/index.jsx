@@ -17,8 +17,6 @@ function EditCourse() {
 			setLoading(true);
 
 			const result = await getFullDetailsOfCourse(courseId, token);
-			console.log('edit course result------', result);
-
 			if (result) {
 				dispatch(setEditCourse(true));
 				dispatch(setCourse(result.courseDetails));

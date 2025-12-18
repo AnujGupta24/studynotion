@@ -33,9 +33,6 @@ export function updateDisplayPicture(token, formData) {
 }
 
 export function updateProfile(token, formData) {
-	console.log('updateprofiletoken', token);
-
-	console.log('formData contents', formData);
 	return async (dispatch) => {
 		const toastId = toast.loading('Loading...');
 
@@ -63,8 +60,6 @@ export function updateProfile(token, formData) {
 }
 
 export async function changePassword(token, formData) {
-	console.log('changePasswordtoken', token);
-	console.log('changePassword formData contents', formData);
 	const toastId = toast.loading('Loading...');
 
 	try {

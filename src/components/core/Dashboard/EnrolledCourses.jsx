@@ -84,7 +84,6 @@ function EnrolledCourses() {
 							{/* progressbar */}
 							<div className="flex w-1/5 flex-col gap-2 px-2 py-3">
 								<p>Progress: {course.progressPercentage || 0}%</p>
-								{console.log(course, '////////////////////////////////////')}
 								<ProgressBar
 									completed={course.progressPercentage || 0}
 									height="8px"

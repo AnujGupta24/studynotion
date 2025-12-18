@@ -4,15 +4,12 @@ import RatingStars from '../../common/RatingStars';
 import { Link } from 'react-router-dom';
 
 function CourseCard({ course, Height }) {
-	console.log('COURSE ID',course._id);
-
 	const [avgReviewCount, setAvgReviewCount] = useState(0);
 
 	useEffect(() => {
 		const count = GetAvgRating(course.ratingAndReviews);
 		setAvgReviewCount(count);
 	}, [course]);
-	console.log('count............', avgReviewCount);
 
 	return (
 		<>

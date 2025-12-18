@@ -2,8 +2,6 @@ import { HiUsers } from 'react-icons/hi';
 import { ImTree } from 'react-icons/im';
 
 function CourseCard({ cardData, currentCard, setCurrentCard }) {
-	console.log(cardData, 'carddata.........');
-
 	return (
 		<div
 			className={`w-fit h-fit ${

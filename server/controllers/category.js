@@ -28,10 +28,9 @@ exports.createCategory = async (req, res) => {
 			message: 'Category created successfully',
 		});
 	} catch (error) {
-		console.log(error);
 		res.status(500).json({
 			success: false,
-			message: 'Category creation failed failed',
+			message: 'Category creation failed failed' + error.message,
 		});
 	}
 };
@@ -46,10 +45,9 @@ exports.showAllCategories = async (req, res) => {
 			data: allCategories,
 		});
 	} catch (error) {
-		console.log(error);
 		res.status(500).json({
 			success: false,
-			message: 'Something went wrong while getting all the category',
+			message: 'Something went wrong while getting all the category' + error.message,
 		});
 	}
 };
@@ -59,7 +57,6 @@ exports.categoryPageDetails = async (req, res) => {
 	try {
 		// Fetch
 		const { categoryId } = req.body;
-		console.log('printing category Id', categoryId);
 
 		// get courses for specific category id
 		const selectedCategory = await Category.findById(categoryId)
@@ -69,11 +66,9 @@ exports.categoryPageDetails = async (req, res) => {
 				populate: 'ratingAndReviews',
 			})
 			.exec();
-		console.log('selected course-----', selectedCategory);
 
 		//Validation
 		if (!selectedCategory) {
-			console.log('category not found');
 			return res.status(404).json({
 				success: false,
 				message: 'Category not found',
@@ -82,10 +77,9 @@ exports.categoryPageDetails = async (req, res) => {
 
 		// Handle the case when there are no courses
 		if (selectedCategory.courses.length === 0) {
-			console.log('No courses found for the selected category.', selectedCategory.name);
 			return res.status(404).json({
 				success: false,
-				message: 'No courses found for the selected category.',
+				message: 'No courses found for the selected category.' + selectedCategory.name,
 			});
 		}
 
@@ -93,7 +87,6 @@ exports.categoryPageDetails = async (req, res) => {
 		const categoriesExceptSelected = await Category.find({
 			_id: { $ne: categoryId },
 		});
-		console.log('categoriesExceptSelected........', categoriesExceptSelected);
 
 		let differentCategory = await Category.findOne(
 			categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]._id
@@ -103,8 +96,6 @@ exports.categoryPageDetails = async (req, res) => {
 				match: { status: 'Published' },
 			})
 			.exec();
-		// console.log('Different COURSE', differentCategory);
-		console.log('differentCategory RESPONSE', differentCategory);
 
 		// Get top-selling courses across all categories
 		const allCategories = await Category.find()
@@ -117,7 +108,6 @@ exports.categoryPageDetails = async (req, res) => {
 
 		const allCourses = allCategories.flatMap((category) => category.courses);
 		const mostSellingCourses = allCourses.sort((a, b) => b.sold - a.sold).slice(0, 10);
-		console.log('mostSellingCourses COURSE----', mostSellingCourses);
 
 		return res.status(200).json({
 			success: true,
@@ -128,7 +118,6 @@ exports.categoryPageDetails = async (req, res) => {
 			},
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'Error while getting category page details',

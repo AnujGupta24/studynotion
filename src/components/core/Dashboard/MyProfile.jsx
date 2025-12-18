@@ -5,7 +5,6 @@ import { RiEditBoxLine } from 'react-icons/ri';
 import formattedDate from '../../../utils/dateFormatter';
 function MyProfile() {
 	const { user } = useSelector((state) => state.profile);
-	console.log('myprofile', user);
 	const navigate = useNavigate();
 
 	return (

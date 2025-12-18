@@ -40,10 +40,10 @@ exports.resetPasswordToken = async (req, res) => {
 			message: 'Email sent successfully, please check the email and change password',
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'Something went wrong while sending reset password mail',
+			error: error.message,
 		});
 	}
 };
@@ -64,7 +64,6 @@ exports.resetPassword = async (req, res) => {
 
 		// get user details from db using token
 		const userDetails = await User.findOne({ token: token });
-		console.log('userDetails', userDetails);
 
 		// if no entry - invalid token
 		if (!userDetails) {
@@ -98,10 +97,10 @@ exports.resetPassword = async (req, res) => {
 			message: 'Password reset successfully',
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: 'Failed to reset password',
+			error: error.message,
 		});
 	}
 };

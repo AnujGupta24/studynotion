@@ -24,7 +24,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 
 	useEffect(() => {
 		if (view || edit) {
-			console.log('modalData', modalData);
 			setValue('lectureTitle', modalData.title);
 			setValue('lectureDesc', modalData.description);
 			setValue('lectureVideo', modalData.videoUrl);
@@ -34,7 +33,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 	// detect whether form is updated or not
 	const isFormUpdated = () => {
 		const currentValues = getValues();
-		console.log('changes after editing form values:', currentValues);
 		if (
 			currentValues.lectureTitle !== modalData.title ||
 			currentValues.lectureDesc !== modalData.description ||
@@ -48,7 +46,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 	// handle the editing of subsection
 	const handleEditSubSection = async () => {
 		const currentValues = getValues();
-		console.log('changes after editing form values:', currentValues);
 
 		const formData = new FormData();
 		formData.append('sectionId', modalData.sectionId);
@@ -68,8 +65,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 
 		const result = await updateSubSection(formData, token);
 		if (result) {
-			console.log('result', result);
-
 			// update the structure of course
 			const updatedCourseContent = course.courseContent.map((section) =>
 				section._id === modalData.sectionId ? result : section
@@ -82,8 +77,6 @@ function SubSectionModal({ modalData, setModalData, add = false, edit = false, v
 	};
 
 	const onSubmit = async (data) => {
-		console.log(data);
-
 		// view
 		if (view) return;
 

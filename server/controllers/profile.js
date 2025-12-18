@@ -9,7 +9,6 @@ exports.updateProfile = async (req, res) => {
 
 		// Find the user by id
 		const user = await User.findById(id);
-		console.log('profilecontroller user', user);
 		if (!user) {
 			return res.status(404).json({ error: 'User not found' });
 		}
@@ -39,7 +38,6 @@ exports.updateProfile = async (req, res) => {
 			profile,
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			error: error.message,
@@ -49,7 +47,6 @@ exports.updateProfile = async (req, res) => {
 
 exports.deleteAccount = async (req, res) => {
 	try {
-		console.log('printing id', req.user.id);
 		const id = req.user.id;
 
 		const user = await User.findById({ _id: id });
@@ -67,10 +64,9 @@ exports.deleteAccount = async (req, res) => {
 			message: 'User deleted successfully',
 		});
 	} catch (error) {
-		console.log(error);
 		res.status(500).json({
 			success: false,
-			message: 'User Cannot be deleted successfully',
+			message: 'User Cannot be deleted successfully' + error.message,
 		});
 	}
 };
@@ -79,7 +75,6 @@ exports.getAllUserDetails = async (req, res) => {
 	try {
 		const id = req.user.id;
 		const userDetails = await User.findById(id).populate('additionalDetails').exec();
-		console.log(userDetails);
 		res.status(200).json({
 			success: true,
 			message: 'User Data fetched successfully',
@@ -98,7 +93,6 @@ exports.updateDisplayPicture = async (req, res) => {
 		const displayPicture = req.files.displayPicture;
 		const userId = req.user.id;
 		const image = await uploadImageToCloudinary(displayPicture, process.env.FOLDER_NAME, 1000, 1000);
-		console.log(image);
 		const updatedProfile = await User.findByIdAndUpdate(
 			{ _id: userId },
 			{ image: image.secure_url },

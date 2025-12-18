@@ -47,8 +47,6 @@ function PublishCourse() {
 
 		const result = await editCourseDetails(formData, token);
 
-		console.log('coirse submit detausl', result);
-
 		if (result) {
 			goToCourses();
 		}

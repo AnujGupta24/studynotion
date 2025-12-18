@@ -61,7 +61,6 @@ exports.createCourse = async (req, res) => {
 		}
 		// Upload the Thumbnail to Cloudinary
 		const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME);
-		console.log(thumbnailImage);
 
 		// Create a new course with the given details
 		const newCourse = await Course.create({
@@ -120,7 +119,6 @@ exports.editCourse = async (req, res) => {
 
 		// if thumbnail image is found update it
 		if (req.files) {
-			console.log('thumbnail update');
 			const thumbnail = req.files.thumbnailImage;
 			const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME);
 			course.thumbnail = thumbnailImage.secure_url;
@@ -182,7 +180,6 @@ exports.getAllCourses = async (req, res) => {
 			data: allCourses,
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(404).json({
 			success: false,
 			message: "Can't Fetch Course Data",
@@ -218,7 +215,6 @@ exports.getCourseDetails = async (req, res) => {
 			data: courseDetails,
 		});
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: error.message,

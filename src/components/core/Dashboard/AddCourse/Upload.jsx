@@ -9,7 +9,6 @@ function Upload({ name, label, register, setValue, errors, video = false, viewDa
 	const [previewSource, setPreviewSource] = useState(viewData ? viewData : editData ? editData : '');
 
 	const onDrop = (acceptedFiles) => {
-		console.log('acceptedFiles', acceptedFiles);
 		const file = acceptedFiles[0];
 		if (!file) return;
 
@@ -31,7 +30,6 @@ function Upload({ name, label, register, setValue, errors, video = false, viewDa
 
 	// Converts image file → base64 for preview
 	const previewFile = (file) => {
-		console.log('uplaod', file);
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {
@@ -87,7 +85,6 @@ function Upload({ name, label, register, setValue, errors, video = false, viewDa
 									height="100%"
 									className="absolute top-0 left-0"
 								/>
-								{console.log('ReactPlayer previewSource:', previewSource)}
 							</div>
 						)}
 						{/* Cancel or remove file  */}

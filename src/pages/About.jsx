@@ -24,7 +24,7 @@ function About() {
 						</p>
 					</header>
 					<div className="sm:h-[70px] lg:h-[150px]"></div>
-					<div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
+					<div className="absolute bottom-0 left-[50%] grid w-full translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
 						<img src={BannerImage1} />
 						<img src={BannerImage2} />
 						<img src={BannerImage3} />
@@ -52,7 +52,7 @@ function About() {
 							</h2>
 							<p className="text-base font-medium text-richblack-300 lg:w-[95%]">
 								Our e-learning platform was born out of a shared vision and passion for
-								transforming education. It all began with a group of educators, technologists, and
+								transforming education. It all began with a group of educators, technologies, and
 								lifelong learners who recognized the need for accessible, flexible, and
 								high-quality learning opportunities in a rapidly evolving digital world.
 							</p>
@@ -74,7 +74,7 @@ function About() {
 					<div className="flex flex-col items-center lg:flex-row justify-between">
 						{/* left box */}
 						<div className="mb-12 flex lg:w-[40%] flex-col gap-10">
-							<h2 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%]">
+							<h2 className="bg-linear-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%]">
 								<HighlightText text={'Our Vision'} />
 							</h2>
 							<p className="text-base font-medium text-richblack-300 lg:w-[95%]">
@@ -115,7 +115,7 @@ function About() {
 
 			{/* ReviewSlider */}
 			<section>
-				<div>review from otehrs</div>
+				<div>review from other learners</div>
 			</section>
 
 			<Footer />

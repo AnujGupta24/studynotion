@@ -16,7 +16,7 @@ function Catalog() {
 	const [catalogPageData, setCatalogPageData] = useState(null);
 	const [categoryId, setCategoryId] = useState('');
 
-	console.log('catalogName', catalogName);
+	// console.log('catalogName', catalogName);
 
 	// fetch all categories
 	useEffect(() => {
@@ -58,12 +58,12 @@ function Catalog() {
 		}
 	}, [categoryId]);
 
-	useEffect(() => {
-		console.log('CategoryId:', categoryId);
-		console.log('Catalog Page Data:', catalogPageData);
-		console.log('Selected Category Courses:', catalogPageData?.data?.selectedCategory?.courses);
-		console.log('Different Category Courses:', catalogPageData?.data?.differentCategory?.courses);
-	}, [catalogPageData, categoryId]);
+	// useEffect(() => {
+	// 	console.log('CategoryId:', categoryId);
+	// 	console.log('Catalog Page Data:', catalogPageData);
+	// 	console.log('Selected Category Courses:', catalogPageData?.data?.selectedCategory?.courses);
+	// 	console.log('Different Category Courses:', catalogPageData?.data?.differentCategory?.courses);
+	// }, [catalogPageData, categoryId]);
 
 	if (loading || !catalogPageData) {
 		return (
@@ -79,8 +79,8 @@ function Catalog() {
 	return (
 		<>
 			{/* Hero Section */}
-			<div className=" box-content bg-richblack-800 px-4">
-				<div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
+			<div className="box-content bg-richblack-800 px-4">
+				<div className="mx-auto flex min-h-[260px] w-10/12 flex-col justify-center gap-4 lg:max-w-maxContent ">
 					<p className="text-sm text-richblack-300">
 						{`Home / Catalog / `}
 						<span className="text-yellow-25">{catalogPageData?.data?.selectedCategory?.name}</span>
@@ -93,7 +93,7 @@ function Catalog() {
 			</div>
 
 			{/* Section 1 */}
-			<div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+			<div className=" mx-auto w-10/12 max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
 				<p className="text-4xl font-bold text-richblack-5">Courses to get you started</p>
 				<div className="my-4 flex border-b border-b-richblack-600 text-sm">
 					<p
@@ -120,18 +120,17 @@ function Catalog() {
 			</div>
 
 			{/* Section 2 */}
-			<div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+			<div className=" mx-auto box-content w-10/12 max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
 				<p className="text-4xl font-bold text-richblack-5">
 					Top courses in {catalogPageData?.data?.selectedCategory?.name}
 				</p>
 				<div className="py-8">
 					<CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
-					{console.log('courseSlider', catalogPageData?.data?.differentCategory?.courses)}
 				</div>
 			</div>
 
 			{/* Section 3 */}
-			<div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+			<div className=" mx-auto box-content w-10/12 max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
 				<div className="text-4xl font-bold text-richblack-5">Frequently Bought</div>
 				<div className="py-8 ">
 					<div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
