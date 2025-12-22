@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { removeFromCart } from '../../../../slices/cartSlice';
 
-function RenderCartCourses() {
+ function RenderCartCourses() {
 	const { cart } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ function RenderCartCourses() {
 					<div className="flex flex-col items-end space-y-2">
 						<button
 							onClick={() => dispatch(removeFromCart(course._id))}
-							className="flex items-center gap-x-1 rounded-md border cursor-pointer  border-richblack-600 bg-richblack-700 py-3 px-3 text-pink-200"
+							className="flex items-center gap-x-1 rounded-md border cursor-pointer border-richblack-600 bg-richblack-700 py-2 px-2 text-pink-200"
 						>
 							<RiDeleteBin6Line />
 							<span>Remove</span>

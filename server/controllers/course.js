@@ -19,6 +19,10 @@ exports.createCourse = async (req, res) => {
 
 		// Get thumbnail image from request files
 		const thumbnail = req.files.thumbnailImage;
+		tag = JSON.parse(tag);
+		instructions = JSON.parse(instructions);
+
+		console.log('tag', tag, 'thumbnail', thumbnail);
 
 		// Check if any of the required fields are missing
 		if (
@@ -194,11 +198,11 @@ exports.getCourseDetails = async (req, res) => {
 		//get id
 		const { courseId } = req.body;
 		//find course details
-		const courseDetails = await Course.find({ _id: courseId })
+		const courseDetails = await Course.findOne({ _id: courseId })
 			.populate({ path: 'instructor', populate: { path: 'additionalDetails' } })
 			.populate('category')
-			.populate('ratingAndreviews')
-			.populate({ path: 'courseContent', populate: { path: 'subSection' } })
+			.populate('ratingAndReviews')
+			.populate({ path: 'courseContent', populate: { path: 'subSection', select: '-videourl' } })
 			.exec();
 
 		//validation

@@ -35,7 +35,7 @@ function Sidebar() {
 					})}
 				</div>
 
-				<div className="mx-auto mt-6 mb-6 h-px w-10/12 bg-richblack-700" />
+				<div className="mx-auto mt-6 mb-6 h-px w-11/12 bg-richblack-700" />
 
 				{/* settings  */}
 				<div className="flex flex-col">

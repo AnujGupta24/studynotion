@@ -24,7 +24,7 @@ function EnrolledCourses() {
 	}, [token]);
 
 	return (
-		<div className="w-10/12 mx-auto max-w-maxContent mt-5">
+		<div className="w-11/12 mx-auto max-w-maxContent mt-5">
 			<h1 className="mb-10 text-3xl font-medium text-richblack-5">Enrolled Courses</h1>
 
 			{!enrolledCourses ? (

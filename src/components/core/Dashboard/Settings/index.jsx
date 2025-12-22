@@ -5,8 +5,8 @@ import UpdatePassword from './UpdatePassword';
 
 function Settings() {
 	return (
-		<>
-			<h1 className="mb-14 text-3xl font-medium text-richblack-5">Edit Profile</h1>
+		<div className="w-11/12 mx-auto max-w-maxContent mt-5">
+			<h1 className="mb-10 text-3xl font-medium text-richblack-5">Edit Profile</h1>
 			{/* Change Profile Picture */}
 			<ChangeProfilePicture />
 			{/* Profile */}
@@ -15,7 +15,7 @@ function Settings() {
 			<UpdatePassword />
 			{/* Delete Account */}
 			<DeleteAccount />
-		</>
+		</div>
 	);
 }
 export default Settings;

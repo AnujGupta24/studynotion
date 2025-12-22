@@ -6,8 +6,8 @@ function Cart() {
 	const { total, totalItems } = useSelector((state) => state.cart);
 
 	return (
-		<div className="w-10/12 mx-auto max-w-maxContent mt-5">
-			<h1 className="mb-10 text-3xl font-medium text-richblack-5">My Wishlists</h1>
+		<div className="w-11/12 mx-auto max-w-maxContent mt-5">
+			<h1 className="mb-10 text-3xl font-medium text-richblack-5">My Cart</h1>
 			<p className="border-b border-b-richblack-400 pb-2 font-semibold text-richblack-400">
 				{totalItems} Courses in Cart
 			</p>
