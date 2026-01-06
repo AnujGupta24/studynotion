@@ -22,13 +22,12 @@ const PORT = process.env.PORT || 5000;
 database();
 
 // middleware:-
-app.use(express.json());
+app.use(express.json()); // body parser
 app.use(cookieParser());
 app.use(
 	cors({
 		origin: 'http://localhost:5173',
-		credentials: true,
-		// allowedHeaders: ['Content-Type', 'Authorization'],
+		credentials: true, // This allows cookie jwt other senstive info flow with requests
 	})
 );
 
@@ -42,7 +41,7 @@ app.use(
 // cloudinary Connect:-
 cloudinaryConnect();
 
-// routes mount:-
+// routes -- API mount:-
 app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/profile', profileRoutes);
 app.use('/api/v1/course', courseRoutes);

@@ -30,7 +30,7 @@ exports.createCategory = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({
 			success: false,
-			message: 'Category creation failed failed' + error.message,
+			message: 'Category creation failed' + error.message,
 		});
 	}
 };
@@ -71,7 +71,7 @@ exports.categoryPageDetails = async (req, res) => {
 		if (!selectedCategory) {
 			return res.status(404).json({
 				success: false,
-				message: 'Category not found',
+				message: 'No course found for this category',
 			});
 		}
 
@@ -83,7 +83,7 @@ exports.categoryPageDetails = async (req, res) => {
 			});
 		}
 
-		// Get courses for different categories
+		// Get courses for other categories
 		const categoriesExceptSelected = await Category.find({
 			_id: { $ne: categoryId },
 		});
@@ -96,6 +96,7 @@ exports.categoryPageDetails = async (req, res) => {
 				match: { status: 'Published' },
 			})
 			.exec();
+		// console.log("Different COURSE", differentCategory)
 
 		// Get top-selling courses across all categories
 		const allCategories = await Category.find()
@@ -108,6 +109,7 @@ exports.categoryPageDetails = async (req, res) => {
 
 		const allCourses = allCategories.flatMap((category) => category.courses);
 		const mostSellingCourses = allCourses.sort((a, b) => b.sold - a.sold).slice(0, 10);
+		// console.log("Different COURSE", differentCategory)
 
 		return res.status(200).json({
 			success: true,

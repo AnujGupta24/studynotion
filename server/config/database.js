@@ -4,10 +4,10 @@ require('dotenv').config();
 const connectWithDb = () => {
 	mongoose
 		.connect(process.env.MONGODB_URL)
-		.then(() => console.log('DB connected successfully!'))
+		.then(() => console.log('MongoDB connected successfully!'))
 		.catch((err) => {
-			console.log('DB connection failed');
 			console.error(err.message);
+			console.log('Error while connecting to the mongo DB');
 			process.exit(1);
 		});
 };

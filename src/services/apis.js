@@ -1,3 +1,4 @@
+// this is how to import the .env varaibles in react+vite project setup
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // AUTH ENDPOINTS

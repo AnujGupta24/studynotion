@@ -25,7 +25,7 @@ exports.createRating = async (req, res) => {
 			});
 		}
 
-		// check if user already reviewd the course
+		// check if user already reviewed the course
 		const alreadyReviewed = await RatingAndReview.findOne({
 			user: userId,
 			course: courseId,
@@ -34,7 +34,7 @@ exports.createRating = async (req, res) => {
 		if (alreadyReviewed) {
 			return res.status(403).json({
 				success: false,
-				message: 'Course is already reviewed by the user',
+				message: 'You already rated and reviewed this course',
 			});
 		}
 
@@ -101,7 +101,7 @@ exports.getAverageRating = async (req, res) => {
 		// if no rating review exists return res
 		return res.status(200).json({
 			success: true,
-			message: 'Average Rating is 0, No ratings given till now',
+			message: 'Course not rated yet',
 			averageRating: 0,
 		});
 	} catch (error) {
@@ -117,7 +117,7 @@ exports.getAverageRating = async (req, res) => {
 exports.getAllRating = async (req, res) => {
 	try {
 		// get data
-		const allReviews = await RatingAndReview.find({})
+		const allRating = await RatingAndReview.find({})
 			.sort({ rating: 'desc' })
 			.populate({
 				path: 'user',
@@ -133,7 +133,7 @@ exports.getAllRating = async (req, res) => {
 		return res.status(200).json({
 			success: true,
 			message: 'All rating and reviews fetched successfully',
-			data: allReviews,
+			data: allRating,
 		});
 	} catch (error) {
 		return res.status(500).json({

@@ -15,19 +15,14 @@ const {
 
 // Categories Controllers Import
 const { showAllCategories, createCategory, categoryPageDetails } = require('../controllers/category');
-
 // Sections Controllers Import
 const { createSection, updateSection, deleteSection } = require('../controllers/section');
-
 // Sub-Sections Controllers Import
 const { createSubSection, updateSubSection, deleteSubSection } = require('../controllers/subSection');
-
 // Rating Controllers Import
 const { createRating, getAverageRating, getAllRating } = require('../controllers/ratingAndReview');
-
 // Course Progress Import
-// const { updateCourseProgress } = require('../controllers/courseProgress');
-
+const { updateCourseProgress } = require('../controllers/courseProgress');
 // Importing Middlewares
 const { auth, isInstructor, isStudent, isAdmin } = require('../middlewares/auth');
 
@@ -61,13 +56,12 @@ router.get('/getInstructorCourses', auth, isInstructor, getInstructorCourses);
 // Delete a Course
 router.delete('/deleteCourse', deleteCourse);
 //Update course progress
-// router.post('/updateCourseProgress', auth, isStudent, updateCourseProgress)
+router.post('/updateCourseProgress', auth, isStudent, updateCourseProgress);
 
 // ********************************************************************************************************
 //                                      Category routes (Only by Admin)
 // ********************************************************************************************************
 // Category can Only be Created by Admin
-// TODO: Put IsAdmin Middleware here
 router.post('/createCategory', auth, isAdmin, createCategory);
 router.get('/showAllCategories', showAllCategories);
 router.post('/getCategoryPageDetails', categoryPageDetails);

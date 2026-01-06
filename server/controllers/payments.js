@@ -16,7 +16,10 @@ exports.capturePayment = async (req, res) => {
 
 	// if no course found
 	if (courses.length === 0) {
-		return res.json({ success: false, message: 'Please provide Course Id' });
+		return res.json({
+			success: false,
+			message: 'Please provide Course Id',
+		});
 	}
 	// if course found calculate the total amount
 	let totalAmount = 0;
@@ -27,13 +30,19 @@ exports.capturePayment = async (req, res) => {
 			course = await Course.findById(course_id);
 
 			if (!course) {
-				return res.status(200).json({ success: false, message: 'Could not find the course' });
+				return res.status(200).json({
+					success: false,
+					message: 'Could not find the course',
+				});
 			}
 
 			// check if student is already enrolled
 			const uid = new mongoose.Types.ObjectId(userId);
 			if (course.studentsEnrolled.includes(uid)) {
-				return res.status(200).json({ success: false, message: 'Student is already Enrolled' });
+				return res.status(200).json({
+					success: false,
+					message: 'Student is already Enrolled',
+				});
 			}
 
 			totalAmount += course.price;
@@ -122,8 +131,7 @@ const enrollStudents = async (courses, userId, res) => {
 			const enrolledCourse = await Course.findOneAndUpdate(
 				{ _id: courseId },
 				{ $push: { studentsEnrolled: userId } },
-				// get the updated document
-				{ new: true }
+				{ new: true } // get the updated document
 			);
 
 			if (!enrolledCourse) {
@@ -152,7 +160,7 @@ const enrollStudents = async (courses, userId, res) => {
 				{ new: true }
 			);
 
-			///bachhe ko mail send karo
+			// send the mail to student
 			const emailResponse = await mailSender(
 				enrollStudents.email,
 				`Successfully Enrolled into ${enrolledCourse.courseName}`,

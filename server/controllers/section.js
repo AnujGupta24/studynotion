@@ -42,7 +42,7 @@ exports.createSection = async (req, res) => {
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
-			message: 'Something went wrong while creating the section',
+			message: 'Section could not be created ',
 			error: error.message,
 		});
 	}
@@ -69,10 +69,9 @@ exports.updateSection = async (req, res) => {
 			data: course,
 		});
 	} catch (error) {
-		console.error('Error updating section:', error);
 		res.status(500).json({
 			success: false,
-			message: 'Internal server error',
+			message: 'Internal server error' + error,
 		});
 	}
 };

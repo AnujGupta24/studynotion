@@ -21,8 +21,8 @@ exports.resetPasswordToken = async (req, res) => {
 
 		// update user by adding token and expiration time
 		const updatedDetails = await User.findOneAndUpdate(
-			{ email: email },
-			{ token: token, resetPasswordExpires: Date.now() + 3600000 },
+			{ email },
+			{ $set: { token, resetPasswordExpires: Date.now() + 3600000 } },
 			{ new: true }
 		);
 
@@ -32,12 +32,12 @@ exports.resetPasswordToken = async (req, res) => {
 		const url = `http://localhost:5173/update-password/${token}`; // frontend link to change the password
 
 		// send mail containing the url
-		await mailSender(email, 'Password Reset Link', `Password Reset Link: ${url}`);
+		await mailSender(email, 'Your password reset link is -', `Click here to rest your password: ${url}`);
 
 		// return res
 		return res.status(200).json({
 			success: true,
-			message: 'Email sent successfully, please check the email and change password',
+			message: 'Reset link have been send to your email',
 		});
 	} catch (error) {
 		return res.status(500).json({
@@ -48,7 +48,7 @@ exports.resetPasswordToken = async (req, res) => {
 	}
 };
 
-// resetpwd-> reset krne ka kaam
+// resetpwd
 exports.resetPassword = async (req, res) => {
 	try {
 		// data fetch - token has been sent via FE
@@ -73,7 +73,7 @@ exports.resetPassword = async (req, res) => {
 			});
 		}
 
-		// token time check
+		// token is expire or not
 		if (userDetails.resetPasswordExpires < Date.now()) {
 			return res.json({
 				success: false,

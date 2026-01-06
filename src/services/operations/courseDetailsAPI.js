@@ -355,7 +355,7 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
 		result = response?.data?.data;
 	} catch (error) {
 		console.log('COURSE_FULL_DETAILS_API API ERROR............', error);
-		result = error.response.data;
+		result = error.response;
 	}
 	toast.dismiss(toastId);
 	return result;

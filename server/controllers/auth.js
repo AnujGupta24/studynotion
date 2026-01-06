@@ -30,6 +30,7 @@ exports.sendOtp = async (req, res) => {
 			lowerCaseAlphabets: false,
 			specialChars: false,
 		});
+		//  console.log('OTP generated--> ', otp)
 
 		// Checking is otp is unique
 		let result = await OTP.findOne({ otp: otp });
@@ -40,7 +41,6 @@ exports.sendOtp = async (req, res) => {
 				lowerCaseAlphabets: false,
 				specialChars: false,
 			});
-
 			result = await OTP.findOne({ otp: otp });
 		}
 
@@ -48,7 +48,7 @@ exports.sendOtp = async (req, res) => {
 
 		// Making entry of otp in db
 		const otpBody = await OTP.create(otpPayload);
-		console.log('otpbody', otpBody);
+		console.log('otpbody-->', otpBody);
 
 		res.status(200).json({
 			success: true,
@@ -97,12 +97,13 @@ exports.signUp = async (req, res) => {
 
 		// find most recent otp stored for the user
 		const recentOtp = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
+		// console.log("recentOtp-->", recentOtp)
 
 		// validate otp
 		if (recentOtp.length === 0) {
 			return res.status(400).json({
 				success: false,
-				message: 'OTP not found',
+				message: 'OTP not found in db',
 			});
 		} else if (otp !== recentOtp[0].otp) {
 			//Invalid otp
@@ -115,7 +116,7 @@ exports.signUp = async (req, res) => {
 		// hash the pwd
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		// create entry in db
+		//Optional details which can be filled later on
 		const profileDetails = await Profile.create({
 			gender: null,
 			dateOfBirth: null,
@@ -123,27 +124,28 @@ exports.signUp = async (req, res) => {
 			contactNumber: null,
 		});
 
+		// create user in db
 		const user = await User.create({
 			firstName,
 			lastName,
 			email,
 			contactNumber,
 			password: hashedPassword,
-			accountType: accountType,
+			accountType,
 			additionalDetails: profileDetails._id,
-			image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
+			image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName}%20${lastName}`,
 		});
 
 		// return res
 		return res.status(200).json({
 			success: true,
-			message: 'User registered successfully',
+			message: 'Account created successfully',
 			user,
 		});
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
-			message: 'User cannot be registered, please try again',
+			message: 'Your account could not be created, please try again',
 			error: error.message,
 		});
 	}
@@ -154,6 +156,7 @@ exports.login = async (req, res) => {
 	try {
 		// fetch data
 		const { email, password } = req.body;
+
 		// validation
 		if (!email || !password) {
 			return res.status(403).json({
@@ -162,39 +165,39 @@ exports.login = async (req, res) => {
 			});
 		}
 
-		// check user exist or not
+		// check user exist in db
 		const user = await User.findOne({ email }).populate('additionalDetails');
 
 		if (!user) {
 			return res.status(401).json({
 				success: false,
-				message: `User is not Registered with Us Please SignUp to Continue`,
+				message: `User does not exists, please SignUp to Continue`,
 			});
 		}
 
-		// generate JWT, after matching password
+		// checking password and generate JWT
 		if (await bcrypt.compare(password, user.password)) {
+			// generate JWT
 			const payload = {
 				email: user.email,
 				id: user._id,
 				accountType: user.accountType,
 			};
-			const token = jwt.sign(payload, process.env.JWT_SECRET, {
-				expiresIn: '7d',
-			});
+			const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
 			user.token = token;
 			user.password = undefined;
 
 			// create cookie and send res
 			const options = {
 				expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-				httpOnly: true,
+				httpOnly: true, // Only accessible on backend
 			};
+
 			return res.cookie('token', token, options).status(200).json({
 				success: true,
+				message: 'Log in successfully',
 				token,
 				user,
-				message: 'User login success',
 			});
 		} else {
 			return res.status(401).json({
@@ -205,7 +208,7 @@ exports.login = async (req, res) => {
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
-			message: 'Login Failure, please try again',
+			message: 'Login Failed, please try again',
 			error: error.message,
 		});
 	}
@@ -224,7 +227,10 @@ exports.changePassword = async (req, res) => {
 		const isPasswordMatch = await bcrypt.compare(oldPassword, userDetails.password);
 		if (!isPasswordMatch) {
 			// If old password does not match, return a 401 (Unauthorized) error
-			return res.status(401).json({ success: false, message: 'The password is incorrect' });
+			return res.status(401).json({
+				success: false,
+				message: 'The password is incorrect',
+			});
 		}
 
 		// Match new password and confirm new password
@@ -253,7 +259,7 @@ exports.changePassword = async (req, res) => {
 					`Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
 				)
 			);
-			console.log('Email sent successfully:', emailResponse?.response);
+			console.log('Email sent successfully:', emailResponse.response);
 		} catch (error) {
 			// If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
 			return res.status(500).json({
@@ -264,7 +270,10 @@ exports.changePassword = async (req, res) => {
 		}
 
 		// Return success response
-		return res.status(200).json({ success: true, message: 'Password updated successfully' });
+		return res.status(200).json({
+			success: true,
+			message: 'Password updated successfully',
+		});
 	} catch (error) {
 		// If there's an error updating the password, log the error and return a 500 (Internal Server Error) error
 		return res.status(500).json({
