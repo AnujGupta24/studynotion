@@ -8,6 +8,9 @@ import {
 	setEntireCourseData,
 	setTotalNoOfLectures,
 } from '../slices/viewCourseSlice';
+import VideoDetailsSidebar from '../components/core/ViewCourse/VideoDetailsSidebar';
+import CourseReviewModal from '../components/core/ViewCourse/CourseReviewModal';
+
 const ViewCourse = () => {
 	const [reviewModal, setReviewModal] = useState(false);
 	const { courseId } = useParams();
@@ -17,16 +20,17 @@ const ViewCourse = () => {
 	useEffect(() => {
 		const setCourseSpecificDetails = async () => {
 			const courseData = await getFullDetailsOfCourse(courseId, token);
-			console.log('view course courseData,.......', courseData);
+			// console.log('view course courseData,.......', courseData);
 			dispatch(setCourseSectionData(courseData.courseDetails.courseContent));
 			dispatch(setEntireCourseData(courseData.courseDetails));
 			dispatch(setCompletedLectures(courseData.completedVideos));
 
 			let lectures = 0;
-			courseData?.data.courseContent?.forEach((sec) => {
+			courseData?.courseDetails?.courseContent?.forEach((sec) => {
 				lectures += sec.subSection.length;
 			});
 			dispatch(setTotalNoOfLectures(lectures));
+			// console.log('lecutre', lectures);
 		};
 		setCourseSpecificDetails();
 	}, [courseId, dispatch, token]);

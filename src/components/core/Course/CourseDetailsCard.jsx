@@ -73,9 +73,8 @@ const CourseDetailsCard = ({ course, setConfirmationModal, handleBuyCourse }) =>
 			<div>
 				<p>30 Day money back guarantee</p>
 				<p>This Course Includes:</p>
-				{console.log('HEUY: ', JSON.parse(course?.instructions))}
 				<div>
-					{JSON.parse(course?.instructions).map((instruction, i) => (
+					{course?.instructions.map((instruction, i) => (
 						<p key={i} className="flex gap-2">
 							<span>{instruction}</span>
 						</p>

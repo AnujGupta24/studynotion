@@ -22,7 +22,7 @@ exports.createSubSection = async (req, res) => {
 			title: title,
 			timeDuration: `${uploadVideo.duration}`,
 			description: description,
-			videoURL: uploadVideo.secure_url,
+			videoUrl: uploadVideo.secure_url,
 		});
 
 		// provide new created subsection id to the section

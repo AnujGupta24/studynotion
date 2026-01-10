@@ -6,6 +6,7 @@ const { courseEnrollmentEmail } = require('../mail/templates/courseEnrollmentEma
 const { paymentSuccessEmail } = require('../mail/templates/paymentSuccessEmail');
 const mongoose = require('mongoose');
 const CourseProgress = require('../models/courseProgress');
+const nodeCrypto = require('crypto'); // CommonJS
 
 // ************************* This code is for the multiple purchase items using actual documentation **************************
 
@@ -94,7 +95,7 @@ exports.verifyPayment = async (req, res) => {
 	}
 
 	let body = razorpay_order_id + '|' + razorpay_payment_id;
-	const expectedSignature = crypto
+	const expectedSignature = nodeCrypto
 		.createHmac('sha256', process.env.RAZORPAY_SECRET)
 		.update(body.toString())
 		.digest('hex');
@@ -170,7 +171,7 @@ const enrollStudents = async (courses, userId, res) => {
 				)
 			);
 
-			console.log('Email Sent Successfully', emailResponse?.response);
+			console.log('Email Sent Successfully', emailResponse);
 		} catch (error) {
 			return res.status(500).json({
 				success: false,

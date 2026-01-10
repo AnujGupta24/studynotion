@@ -6,17 +6,18 @@ exports.updateCourseProgress = async (req, res) => {
 	const userId = req.user.id;
 
 	try {
-		// check if the subsection is valid
+		//check if the subsection is valid
 		const subSection = await SubSection.findById(subSectionId);
 
 		if (!subSection) {
 			return res.status(404).json({
-				success: false,
-				message: 'Invalid subsection',
+				error: 'Invalid SubSection',
 			});
 		}
 
-		// check for old entry
+		console.log('SubSection Validation Done');
+
+		//check for old entry
 		let courseProgress = await CourseProgress.findOne({
 			courseId: courseId,
 			userId: userId,
@@ -27,7 +28,7 @@ exports.updateCourseProgress = async (req, res) => {
 				message: 'Course Progress does not exist',
 			});
 		} else {
-			// console.log('Course Progress Validation Done');
+			console.log('Course Progress Validation Done');
 			//check for re-completing video/subsection
 			if (courseProgress.completedVideos.includes(subSectionId)) {
 				return res.status(400).json({
@@ -35,7 +36,7 @@ exports.updateCourseProgress = async (req, res) => {
 				});
 			}
 
-			//push into completed video
+			//poush into completed video
 			courseProgress.completedVideos.push(subSectionId);
 			console.log('Copurse Progress Push Done');
 		}
@@ -47,6 +48,8 @@ exports.updateCourseProgress = async (req, res) => {
 		});
 	} catch (error) {
 		console.error(error);
-		return res.status(400).json({ error: 'Internal Server Error' });
+		return res.status(400).json({
+			error: 'Internal Server Error',
+		});
 	}
 };
