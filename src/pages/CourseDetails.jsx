@@ -48,7 +48,7 @@ function CourseDetails() {
 		setAvgRatingCount(count);
 	}, [courseData]);
 
-	console.log('courseData', courseData);
+	// console.log('courseData', courseData);
 
 	// get  totalNoOfLectures
 	const [totalNoOfLectures, setTotalNoOfLectures] = useState(0);
@@ -84,7 +84,11 @@ function CourseDetails() {
 	};
 
 	if (loading || paymentLoading || !courseData) {
-		return <div className="loader"></div>;
+		return (
+			<div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+				<div className="loader"></div>
+			</div>
+		);
 	}
 
 	if (!courseData?.success) {

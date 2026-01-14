@@ -8,7 +8,7 @@ Chart.register(...registerables);
 function InstructorChart({ courses }) {
 	// State to keep track of the currently selected chart
 	const [currChart, setCurrChart] = useState('students');
-	console.log('currChart', currChart.length);
+	// console.log('currChart', currChart.length);
 
 	// fnc to genrate random colors
 	const getRandomColors = (numcolors) => {

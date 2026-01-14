@@ -24,7 +24,7 @@ function CourseReviewModal({ setReviewModal }) {
 	}, [setValue]);
 
 	const ratingChanged = (newRating) => {
-		console.log('new rating', newRating);
+		// console.log('new rating', newRating);
 		setValue('courseRating', newRating);
 	};
 

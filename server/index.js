@@ -6,6 +6,7 @@ const userRoutes = require('./routes/user');
 const profileRoutes = require('./routes/profile');
 const paymentRoutes = require('./routes/payment');
 const courseRoutes = require('./routes/course');
+const contactUsRoute = require('./routes/contact');
 
 // db:-
 const database = require('./config/database');
@@ -46,12 +47,13 @@ app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/profile', profileRoutes);
 app.use('/api/v1/course', courseRoutes);
 app.use('/api/v1/payment', paymentRoutes);
+app.use('/api/v1/reach', contactUsRoute);
 
 // def route:-
 app.get('/', (req, res) => {
 	return res.json({
 		success: true,
-		message: 'your server is up and running.....',
+		message: 'DEFAULT ROUTE',
 	});
 });
 

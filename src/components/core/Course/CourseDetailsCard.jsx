@@ -7,7 +7,7 @@ import { ACCOUNT_TYPE } from '../../../utils/constants';
 import { addToCart } from '../../../slices/cartSlice';
 
 const CourseDetailsCard = ({ course, setConfirmationModal, handleBuyCourse }) => {
-	console.log('courseDetailscard.....', course);
+	// console.log('courseDetailscard.....', course);
 	const { thumbnail, price } = course;
 
 	const { user } = useSelector((state) => state.profile);

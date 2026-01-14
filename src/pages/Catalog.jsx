@@ -47,7 +47,7 @@ function Catalog() {
 			const getCategoryDetails = async () => {
 				try {
 					const response = await getCatalogPageData(categoryId);
-					console.log('getCatalogPageData response.......', response);
+					// console.log('getCatalogPageData response.......', response);
 					setCatalogPageData(response);
 				} catch (error) {
 					console.log('frontend', error);

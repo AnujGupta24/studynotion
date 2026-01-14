@@ -9,7 +9,7 @@ import { FaCheck } from 'react-icons/fa6';
 import { Table, Tbody, Td, Th, Thead, Tr } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
-import formatDate from '../../../../utils/dateFormatter';
+import { formatDate } from '../../../../services/formatDate';
 import ConfirmationModal from '../../../common/ConfirmationModal';
 import { COURSE_STATUS } from '../../../../utils/constants';
 import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseDetailsAPI';
