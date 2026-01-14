@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getUserEnrolledCourses } from '../../../services/operations/profileApi';
+import { getUserEnrolledCourses } from '../../../services/operations/profileAPI';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@ramonak/react-progress-bar';
 
@@ -59,7 +59,7 @@ function EnrolledCourses() {
 											sub-section/${course.courseContent?.[0]?.subSection?.[0]?._id}`
 									);
 								}}
-							>	
+							>
 								{/* thumbnail */}
 								<img
 									src={course.thumbnail}
