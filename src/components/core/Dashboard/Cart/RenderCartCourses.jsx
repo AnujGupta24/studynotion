@@ -1,5 +1,5 @@
 import { FaStar } from 'react-icons/fa6';
-import ReactStars from 'react-rating-stars-component';
+import ReactStars from 'react-stars';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 

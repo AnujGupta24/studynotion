@@ -8,6 +8,7 @@ import StatsComponent from '../components/core/AboutPage/StatsComponent';
 import LearningGrid from '../components/core/AboutPage/LearningGrid';
 import Footer from '../components/common/Footer';
 import ContactFormSection from '../components/core/AboutPage/ContactFormSection';
+import ReviewSlider from '../components/common/ReviewSlider';
 
 function About() {
 	return (
@@ -114,9 +115,9 @@ function About() {
 			</section>
 
 			{/* ReviewSlider */}
-			<section>
-				<div>review from other learners</div>
-			</section>
+			<div className="w-10/12 max-w-maxContent mx-auto mb-10">
+				<ReviewSlider />
+			</div>
 
 			<Footer />
 		</div>

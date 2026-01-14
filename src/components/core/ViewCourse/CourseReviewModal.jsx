@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import ReactStars from 'react-rating-stars-component';
+import ReactStars from "react-stars"
 import IconBtn from '../../common/IconBtn';
 import { createRating } from '../../../services/operations/courseDetailsAPI';
 import { IoMdClose } from 'react-icons/io';
@@ -24,6 +24,7 @@ function CourseReviewModal({ setReviewModal }) {
 	}, [setValue]);
 
 	const ratingChanged = (newRating) => {
+		console.log('new rating', newRating);
 		setValue('courseRating', newRating);
 	};
 
@@ -40,8 +41,8 @@ function CourseReviewModal({ setReviewModal }) {
 	};
 
 	return (
-		<div className="fixed inset-0 z-1000 mt-0! grid h-screen w-screen place-items-center overflow-auto bg-opacity-10 backdrop-blur-sm">
-			<div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
+		<div className="fixed inset-0 z-50 mt-0! grid h-screen w-screen place-items-center overflow-auto bg-opacity-10 backdrop-blur-sm">
+			<div className="my-10 w-11/12 max-w-[600px] rounded-lg border border-richblack-400 bg-richblack-800">
 				{/* modal header */}
 				<div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
 					<p className="text-xl font-semibold text-richblack-5">Add review</p>
@@ -67,7 +68,9 @@ function CourseReviewModal({ setReviewModal }) {
 					</div>
 
 					<form onSubmit={handleSubmit(onSubmit)} className="mt-6 flex flex-col items-center">
-						<ReactStars count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
+						<div className="text-yellow-500">
+							<ReactStars count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
+						</div>
 
 						<div className="flex w-11/12 flex-col space-y-2">
 							<label className="text-sm text-richblack-5" htmlFor="courseExperience">
@@ -77,7 +80,7 @@ function CourseReviewModal({ setReviewModal }) {
 								id="courseExperience"
 								placeholder="Add your Experience here"
 								{...register('courseExperience', { required: true })}
-								className="form-style resize-x-none min-h-[130px] w-full"
+								className="form-style resize-x-none min-h-[150px] w-full"
 							/>
 							{errors.courseExperience && (
 								<span className="ml-2 text-xs tracking-wide text-pink-200">

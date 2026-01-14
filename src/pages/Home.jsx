@@ -9,6 +9,7 @@ import TimelineSection from '../components/core/HomePage/TimelineSection';
 import InstructorSection from '../components/core/HomePage/InstructorSection';
 import Footer from '../components/common/Footer';
 import ExploreMore from '../components/core/HomePage/ExploreMore';
+import ReviewSlider from '../components/common/ReviewSlider';
 
 function Home() {
 	return (
@@ -159,12 +160,11 @@ function Home() {
 			</div>
 
 			{/* section3 */}
-			<div className="w-10/12 max-w-maxContent flex flex-col items-center justify-between gap-7 mx-auto bg-richblack-900 text-white">
+			<div className="w-10/12 max-w-maxContent  flex flex-col items-center justify-between gap-20 mb-10 mx-auto bg-richblack-900 text-white">
 				<InstructorSection />
 
-				<h2 className="text-center text-4xl font-semibold mt-5">reviews from other learners</h2>
-
-				{/* reviewsSider */}
+				{/* reviewsSider */}   
+				<ReviewSlider />
 			</div>
 
 			{/* footer  */}
