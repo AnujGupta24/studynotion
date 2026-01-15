@@ -22,8 +22,8 @@ function Dashboard() {
 				<div className="mx-auto w-11/12 max-w-maxContent py-5">
 					<Outlet />
 				</div>
+				<Footer />
 			</div>
-			<Footer />
 		</div>
 	);
 }
