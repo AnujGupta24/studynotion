@@ -16,6 +16,7 @@ import ReactMarkDown from 'react-markdown';
 import { BiInfoCircle } from 'react-icons/bi';
 import CourseAccordionBar from '../components/core/Course/CourseAccordianBar';
 
+// function starts 
 function CourseDetails() {
 	const { user } = useSelector((state) => state.profile);
 	const { token } = useSelector((state) => state.auth);
