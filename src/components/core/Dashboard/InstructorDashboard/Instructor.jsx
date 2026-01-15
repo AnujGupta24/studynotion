@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getInstructorData } from '../../../../services/operations/profileAPI';
-import { fetchInstructorCourses } from '../../../../services/operations/courseDetailsAPI';
+import { getInstructorData } from '../../../../services/operations/profileApi';
+import { fetchInstructorCourses } from '../../../../services/operations/courseDetailsApi';
 import InstructorChart from './InstructorChart';
 import { Link } from 'react-router-dom';
 

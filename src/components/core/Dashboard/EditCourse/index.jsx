@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import RenderSteps from '../AddCourse/RenderSteps';
 import { setCourse, setEditCourse } from '../../../../slices/courseSlice';
-import { getFullDetailsOfCourse } from '../../../../services/operations/courseDetailsAPI';
+import { getFullDetailsOfCourse } from '../../../../services/operations/courseDetailsApi';
 
 function EditCourse() {
 	const { course } = useSelector((state) => state.course);

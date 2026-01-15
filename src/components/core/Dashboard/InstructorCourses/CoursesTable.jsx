@@ -12,7 +12,7 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { formatDate } from '../../../../services/formatDate';
 import ConfirmationModal from '../../../common/ConfirmationModal';
 import { COURSE_STATUS } from '../../../../utils/constants';
-import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseDetailsAPI';
+import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseDetailsApi';
 
 function CoursesTable({ courses, setCourses }) {
 	const navigate = useNavigate();

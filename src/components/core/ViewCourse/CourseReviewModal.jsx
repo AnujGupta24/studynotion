@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import ReactStars from "react-stars"
 import IconBtn from '../../common/IconBtn';
-import { createRating } from '../../../services/operations/courseDetailsAPI';
+import { createRating } from '../../../services/operations/courseDetailsApi';
 import { IoMdClose } from 'react-icons/io';
 
 function CourseReviewModal({ setReviewModal }) {

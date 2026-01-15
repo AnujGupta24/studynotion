@@ -3,7 +3,7 @@ import { sidebarLinks } from '../../../data/dashboard-links';
 import SidebarLink from './SidebarLink';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../../../services/operations/authAPI';
+import { logout } from '../../../services/operations/authApi';
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { GrLogout } from 'react-icons/gr';
 

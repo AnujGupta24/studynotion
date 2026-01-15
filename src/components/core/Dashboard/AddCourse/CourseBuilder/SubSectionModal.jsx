@@ -6,7 +6,7 @@ import Upload from '../Upload';
 import { RxCross2 } from 'react-icons/rx';
 import toast from 'react-hot-toast';
 import { setCourse } from '../../../../../slices/courseSlice';
-import { createSubSection, updateSubSection } from '../../../../../services/operations/courseDetailsAPI';
+import { createSubSection, updateSubSection } from '../../../../../services/operations/courseDetailsApi';
 
 function SubSectionModal({ modalData, setModalData, add = false, edit = false, view = false }) {
 	const {

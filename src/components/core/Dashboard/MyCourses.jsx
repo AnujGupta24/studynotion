@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchInstructorCourses } from '../../../services/operations/courseDetailsAPI';
+import { fetchInstructorCourses } from '../../../services/operations/courseDetailsApi';
 import { RiAddLine } from 'react-icons/ri';
 import CoursesTable from './InstructorCourses/CoursesTable';
 import IconBtn from '../../common/IconBtn';

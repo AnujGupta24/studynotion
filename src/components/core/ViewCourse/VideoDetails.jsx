@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { markLectureAsComplete } from '../../../services/operations/courseDetailsAPI';
+import { markLectureAsComplete } from '../../../services/operations/courseDetailsApi';
 import { updateCompletedLectures } from '../../../slices/viewCourseSlice';
 import ReactPlayer from 'react-player';
 import IconBtn from '../../common/IconBtn';

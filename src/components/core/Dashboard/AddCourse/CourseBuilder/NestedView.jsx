@@ -6,7 +6,7 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiFillCaretDown, AiOutlinePlus } from 'react-icons/ai';
 
 import ConfirmationModal from '../../../../common/ConfirmationModal';
-import { deleteSection, deleteSubSection } from '../../../../../services/operations/courseDetailsAPI';
+import { deleteSection, deleteSubSection } from '../../../../../services/operations/courseDetailsApi';
 import { setCourse } from '../../../../../slices/courseSlice';
 import SubSectionModal from './SubSectionModal';
 

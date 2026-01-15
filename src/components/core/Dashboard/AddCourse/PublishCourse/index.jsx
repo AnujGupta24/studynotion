@@ -5,7 +5,7 @@ import IconBtn from '../../../../common/IconBtn';
 import { resetCourseState, setStep } from '../../../../../slices/courseSlice';
 import { COURSE_STATUS } from '../../../../../utils/constants';
 import { useNavigate } from 'react-router-dom';
-import { editCourseDetails } from '../../../../../services/operations/courseDetailsAPI';
+import { editCourseDetails } from '../../../../../services/operations/courseDetailsApi';
 
 function PublishCourse() {
 	const { register, setValue, getValues, handleSubmit } = useForm();

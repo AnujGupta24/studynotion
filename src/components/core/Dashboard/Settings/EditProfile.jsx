@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { updateProfile } from '../../../../services/operations/settingsAPI';
+import { updateProfile } from '../../../../services/operations/settingsApi';
 import IconBtn from '../../../common/IconBtn';
 
 function EditProfile() {
