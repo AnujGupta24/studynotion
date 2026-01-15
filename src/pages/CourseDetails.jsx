@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buyCourse } from '../services/operations/studentFeaturesApi';
 import { useEffect, useState } from 'react';
-import { fetchCourseDetails } from '../services/operations/courseDetailsAPI';
+import { fetchCourseDetails } from '../services/operations/courseDetailsApi';
 import GetAvgRating from '../utils/avgRating';
 import Error from './Error';
 import ConfirmationModal from '../components/common/ConfirmationModal';
