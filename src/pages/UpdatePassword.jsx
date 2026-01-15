@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { resetPassword } from '../services/operations/authAPI';
+import { resetPassword } from '../services/operations/authApi';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineArrowLeft } from 'react-icons/ai';
 
 function UpdatePassword() {

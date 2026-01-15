@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getPasswordResetToken } from '../services/operations/authAPI';
+import { getPasswordResetToken } from '../services/operations/authApi';
 
 function ForgotPassword() {
 	const [emailSent, setEmailSent] = useState(false);

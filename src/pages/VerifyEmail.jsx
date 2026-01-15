@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import OTPInput from 'react-otp-input';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendOtp, signUp } from '../services/operations/authAPI';
+import { sendOtp, signUp } from '../services/operations/authApi';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
