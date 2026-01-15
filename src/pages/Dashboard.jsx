@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/core/Dashboard/Sidebar';
+import Footer from '../components/common/Footer';
 
 function Dashboard() {
 	const { loading: authLoading } = useSelector((state) => state.auth);
@@ -20,6 +21,7 @@ function Dashboard() {
 			<div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
 				<div className="mx-auto w-11/12 max-w-maxContent py-5">
 					<Outlet />
+					<Footer />
 				</div>
 			</div>
 		</div>
